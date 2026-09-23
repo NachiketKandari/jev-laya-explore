@@ -1,0 +1,9 @@
+{
+  "cards": "physical or virtual cards: ordering, delivery, activation, PIN, loss, theft, card not working",
+  "transfers": "sending or receiving money: transfers, direct debits, beneficiaries, transfer status and timing",
+  "topup": "adding money to the account: top-ups by card, cash or bank transfer, limits and failures",
+  "fees_charges": "unexpected fees or wrong amounts: extra charges, wrong exchange rates, double charges",
+  "refunds_disputes": "refunds and problem payments: refund requests, declined or unrecognised payments",
+  "account_identity": "account settings and identity: personal details, verification, closing the account",
+  "help_info": "general information: exchange rates, balances, supported countries, cards and currencies"
+}

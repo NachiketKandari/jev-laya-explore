@@ -39,8 +39,20 @@ pinned host wheels and let `uv sync` resolve fresh — `laya` is pure Python and
 ## Try it
 
 ```bash
+# concepts first: choice / noul / score, live
+uv run tutorial_laya.py
+
 # classify a string
 uv run laya_classify.py "the API returns 500 on every request"
+
+# notebook: 3,080 real bank queries -> 7 categories, no training
+# (open notebooks/laya_customer_classification.ipynb in Jupyter/VS Code)
+
+# head-to-head: Laya vs TF-IDF+LogReg (measured) vs Jev (cited)
+uv run --with scikit-learn scripts/bench_comparison.py   # see COMPARISON.md + TRAINING.md
+
+# web demo of the notebook's results (accuracy bars, confusions, query explorer)
+cd web && npm install && npm run dev   # http://localhost:3000
 
 # accuracy, latency, confidence gating, and the cost of extra questions
 uv run bench_classify.py

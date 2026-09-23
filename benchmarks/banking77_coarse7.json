@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "dataset": "PolyAI Banking77 test->7 coarse groups; sklearn trained on train->7",
+    "n": 300,
+    "seed": 7,
+    "machine": "M1 Pro 16GB",
+    "note": "jev figures are published by others, NOT measured here"
+  },
+  "laya": {
+    "variant": "english checkpoint, mlx runtime, zero-shot (no training)",
+    "accuracy": 0.6933,
+    "p50_ms": 51.1,
+    "p95_ms": 62.0,
+    "mean_ms": 52.3,
+    "train_rows": 0,
+    "weights": "421M vendored, Apache-2.0"
+  },
+  "sklearn_tfidf_logreg": {
+    "variant": "TfidfVectorizer(1-2gram, 50k) + LogisticRegression, trained",
+    "accuracy": 0.9267,
+    "train_s": 0.8,
+    "train_rows": 10003,
+    "predict_single_p50_ms": 0.227,
+    "predict_batch_ms_per_doc": 0.011
+  },
+  "jev_cited": {
+    "measured_here": false,
+    "accuracy_banking77_full_77labels": 0.87,
+    "accuracy_ag_news_4labels": 0.91,
+    "accuracy_dair_emotion_6labels": 0.48,
+    "p50_ms": "236-276",
+    "cost": "$0.042 / 1M tokens, closed API",
+    "sources": [
+      "https://github.com/NandhaKishorM/laya (README + BENCHMARKS.md table)",
+      "https://github.com/AbdelStark/jev-benchmarks (latency)",
+      "https://github.com/nibzard/decision-model-benchmark (latency)"
+    ]
+  }
+}
