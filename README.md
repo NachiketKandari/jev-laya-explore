@@ -1,8 +1,8 @@
 # jev-laya-test
 
 Scratch workspace for evaluating **Laya** (open local typed-decision model) and **Jev**
-(TypeSafe's hosted equivalent) as local classifiers. See **[FINDINGS.md](FINDINGS.md)** for
-measured results and the reasoning.
+(TypeSafe's hosted equivalent) as local classifiers. Start with **[JOURNEY.md](JOURNEY.md)**
+— the full log of what was tried, in order — or jump to a doc below.
 
 Everything needed to run this is committed: the **wheels** (`vendor/wheels/`, 221 MB) and the
 **weights** (`models/`, 3.2 GB). It installs and runs with no network.
