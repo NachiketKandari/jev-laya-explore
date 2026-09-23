@@ -20,7 +20,9 @@ localjev/
 # Re-fetch locally: `uv run scripts/fetch_models.py` (+ train split notes in
 # README "Committing 3.2 GB of weights"). Nothing pushed yet depends on them.
 models/
-vendor/wheels/torch-2.14.0-cp312-cp312-macosx_14_0_arm64.whl
+vendor/wheels/*.whl
+# (SHA256SUMS stays tracked as the manifest; rebuild the house with
+#  `uv pip download -r requirements.txt -d vendor/wheels --only-binary=:all:`)
 
 # Local training outputs: reports (*.json) are committed, weight files are not
 # (~100MB each -- over GitHub's 100MB/file cap). Reproduce with
