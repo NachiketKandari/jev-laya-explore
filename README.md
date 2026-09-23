@@ -51,6 +51,9 @@ uv run laya_classify.py "the API returns 500 on every request"
 # head-to-head: Laya vs TF-IDF+LogReg (measured) vs Jev (cited)
 uv run --with scikit-learn scripts/bench_comparison.py   # see COMPARISON.md + TRAINING.md
 
+# Laya + LLM coupling (gate + router, stub LLM, fully local)
+uv run demo_llm_couple.py   # see PRODUCTS.md for BFSI-local use cases
+
 # web demo of the notebook's results (accuracy bars, confusions, query explorer)
 cd web && npm install && npm run dev   # http://localhost:3000
 

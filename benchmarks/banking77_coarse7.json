@@ -9,19 +9,19 @@
   "laya": {
     "variant": "english checkpoint, mlx runtime, zero-shot (no training)",
     "accuracy": 0.6933,
-    "p50_ms": 51.1,
-    "p95_ms": 62.0,
-    "mean_ms": 52.3,
+    "p50_ms": 52.2,
+    "p95_ms": 64.7,
+    "mean_ms": 53.5,
     "train_rows": 0,
     "weights": "421M vendored, Apache-2.0"
   },
   "sklearn_tfidf_logreg": {
     "variant": "TfidfVectorizer(1-2gram, 50k) + LogisticRegression, trained",
     "accuracy": 0.9267,
-    "train_s": 0.8,
+    "train_s": 0.9,
     "train_rows": 10003,
-    "predict_single_p50_ms": 0.227,
-    "predict_batch_ms_per_doc": 0.011
+    "predict_single_p50_ms": 0.244,
+    "predict_batch_ms_per_doc": 0.0132
   },
   "jev_cited": {
     "measured_here": false,
@@ -35,5 +35,14 @@
       "https://github.com/AbdelStark/jev-benchmarks (latency)",
       "https://github.com/nibzard/decision-model-benchmark (latency)"
     ]
+  },
+  "nli_bart_mnli": {
+    "variant": "facebook/bart-large-mnli (407M, MIT), premise=query, 1 forward pass per label",
+    "accuracy": 0.5333,
+    "load_s": 238.7,
+    "total_s": 38.6,
+    "p50_ms": 121.9,
+    "mean_ms": 128.6,
+    "train_rows": 0
   }
 }

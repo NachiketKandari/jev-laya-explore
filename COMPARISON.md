@@ -5,20 +5,21 @@ Same 300 queries (seed 7), same 7 labels, M1 Pro 16 GB. Raw numbers live in
 
 ```bash
 uv run --with scikit-learn scripts/bench_comparison.py
+uv run --with scikit-learn scripts/bench_comparison.py --nli   # + bart-large-mnli zero-shot (~1.6GB dl, minutes)
 ```
 
 (`--with` keeps scikit-learn out of `pyproject.toml`; it is a benchmark-only dep.)
 
 ## Result
 
-| | Laya (measured) | TF-IDF + LogReg (measured) | Jev (cited, not measured) |
-|---|---|---|---|
-| accuracy | 0.693 | **0.927** | 0.870* |
-| label space | 7 coarse, zero-shot | 7 coarse, trained | *77 full intents* |
-| training data | none (7 descriptions) | 10,003 labelled rows, 0.8 s CPU | none (API) |
-| latency | p50 51 ms / p95 62 ms | **0.23 ms single, 0.01 ms batch** | 236–276 ms p50 |
-| cost | $0 self-hosted, Apache-2.0 | $0, sklearn BSD | $0.042 / 1M tokens, closed |
-| calibration | temperatures to fit | `predict_proba` (uncalibrated) | published ECE 0.246 raw |
+| | Laya (measured) | TF-IDF + LogReg (measured) | NLI zero-shot (measured) | Jev (cited, not measured) |
+|---|---|---|---|---|
+| accuracy | 0.693 | **0.927** | 0.533 | 0.870* |
+| label space | 7 coarse, zero-shot | 7 coarse, trained | 7 coarse, zero-shot | *77 full intents* |
+| training data | none (7 descriptions) | 10,003 labelled rows, 0.8 s CPU | none | none (API) |
+| latency | p50 51 ms / p95 62 ms | **0.23 ms single, 0.01 ms batch** | p50 122 ms (7 passes/doc) | 236–276 ms p50 |
+| cost | $0 self-hosted, Apache-2.0 | $0, sklearn BSD | $0, BART MIT | $0.042 / 1M tokens, closed |
+| calibration | temperatures to fit | `predict_proba` (uncalibrated) | entailment scores (uncalibrated) | published ECE 0.246 raw |
 
 \* Jev's 0.870 is on the **full 77-label** task (harder per-guess than 7-way, so not
 directly comparable) and is **published by others, never run here** — no TypeSafe
@@ -30,6 +31,10 @@ table, latency via `AbdelStark/jev-benchmarks` and `nibzard/decision-model-bench
 - **sklearn wins this task outright** — 0.927 at microseconds per doc. Single
   English domain + 10k labels is exactly what linear models are for. If your
   labels are fixed and you have labels, start here.
+- **NLI zero-shot is not "better Laya" here** — bart-large-mnli (407M, same size
+  class) scored 0.533 with the same descriptions as hypotheses, at 122 ms/doc
+  (one forward pass *per label* vs Laya's one pass for all 7). Laya's
+  mask-per-option scoring beats premise-hypothesis entailment on this task.
 - **Laya's 0.693 cost zero labels.** Its edge is elsewhere: new labels without
   retraining, 5 mixed questions (choice+score+noul) in one ~150 ms pass,
   calibrated probabilities, multilingual routing. Fine-tuned it beats Jev on

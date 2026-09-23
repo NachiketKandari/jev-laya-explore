@@ -46,6 +46,8 @@ def main() -> None:
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--runtime", default="auto")
     ap.add_argument("--out", default="benchmarks/banking77_coarse7.json")
+    ap.add_argument("--nli", action="store_true",
+                    help="also run bart-large-mnli zero-shot (downloads ~1.6GB, minutes)")
     args = ap.parse_args()
 
     labels: dict = json.loads((ROOT / "data/coarse_labels.json").read_text())
@@ -127,6 +129,34 @@ def main() -> None:
     }
     out = ROOT / args.out
     out.parent.mkdir(parents=True, exist_ok=True)
+
+    if args.nli:
+        from transformers import pipeline
+        t0 = time.perf_counter()
+        zsc = pipeline("zero-shot-classification", model="facebook/bart-large-mnli",
+                       batch_size=32, truncation=True)
+        load_s = time.perf_counter() - t0
+        # Fair fight: same descriptions Laya gets, templated as NLI hypotheses.
+        hyps = {k: f"This customer message is about {v}." for k, v in labels.items()}
+        nli_preds, nli_lat = [], []
+        t0 = time.perf_counter()
+        for t in texts:
+            t1 = time.perf_counter()
+            r = zsc(t, list(hyps.values()), multi_label=False)
+            best = r["labels"][0]
+            nli_preds.append(next(k for k, v in hyps.items() if v == best))
+            nli_lat.append((time.perf_counter() - t1) * 1000)
+        nli_s = time.perf_counter() - t0
+        nli_acc = sum(a == b for a, b in zip(nli_preds, gold)) / len(gold)
+        result["nli_bart_mnli"] = {
+            "variant": "facebook/bart-large-mnli (407M, MIT), premise=query, 1 forward pass per label",
+            "accuracy": round(nli_acc, 4),
+            "load_s": round(load_s, 1), "total_s": round(nli_s, 1),
+            "p50_ms": round(pct(nli_lat, 50), 1), "mean_ms": round(statistics.mean(nli_lat), 1),
+            "train_rows": 0,
+        }
+        print(f"  nli     acc={nli_acc:.3f}  p50={pct(nli_lat, 50):.1f}ms load={load_s:.0f}s")
+
     out.write_text(json.dumps(result, indent=2) + "\n")
     print(f"n={len(sample)} seed={args.seed}")
     print(f"  laya    acc={laya_acc:.3f}  p50={pct(laya_lat, 50):.1f}ms p95={pct(laya_lat, 95):.1f}ms  train=none")
