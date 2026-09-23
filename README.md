@@ -109,11 +109,42 @@ uv run scripts/fetch_models.py --force              # re-fetch
 
 ## Committing 3.2 GB of weights
 
-Git stores these as full blobs, so the repository is ~3.4 GB and a fresh clone transfers all of
-it. Note that **GitHub rejects files over 100 MB** and warns above 50 MB, so a plain `git push`
-of this tree will fail; you need `git-lfs` (`*.safetensors`) or an external weights location
-(object storage, a release asset, or a plain `rsync`/`scp` of `models/`). The wheelhouse at
-221 MB is safe to push as-is.
+`models/` is committed, so the repository is ~3.4 GB and a fresh clone transfers all of it. Against
+GitHub's current limits:
+
+| | limit | this repo |
+|---|---|---|
+| Repo tree, no LFS | **100 MB per file** (hard reject) | 4 checkpoint files of 644–846 MB → rejected |
+| Git LFS per file | 2 GB (Free/Pro), 4 GB (Team) | largest is 846 MB → fits |
+| Git LFS free storage | 10 GiB / month (Free/Pro) | 3.0 GiB → fits |
+| Git LFS free bandwidth | 10 GiB / month (Free/Pro) | **every fresh clone downloads ~3.0 GiB** |
+
+Two consequences worth knowing before you push:
+
+1. **`git-lfs` is not installed on this machine** (`git lfs version` → not a git command), so the
+   weight files cannot be pushed at all until you `brew install git-lfs` and `git lfs install`,
+   then re-add the weights so they are tracked via LFS (`.gitattributes` with `*.safetensors`).
+2. Even with LFS, each clone spends ~30% of the free monthly bandwidth, and pushing a *modified*
+   weight file bills its full size again.
+
+Cheaper alternatives, roughly in order:
+
+- **Don't ship the weights.** They are public upstream artefacts and
+  `uv run scripts/fetch_models.py` re-fetches them in a few minutes. Keeps the repo at ~230 MB.
+- **GitHub release assets** — 2 GiB per file and *not* billed as LFS; attach one per checkpoint.
+- **An external store** (Hugging Face, S3, or plain `rsync` of `models/`).
+
+The wheelhouse has the same problem in miniature: it is 221 MB including a **127 MB `torch` wheel**
+over the 100 MB tree limit. Either track `vendor/wheels/*.whl` with LFS too, or keep the wheels out
+and let `uv sync` fetch them.
+
+To drop the weights before pushing anything (nothing is pushed yet, so this is clean):
+
+```bash
+git reset --soft HEAD~1          # uncommit, keep the files staged
+git restore --staged models/     # unstage them
+echo 'models/' >> .gitignore     # keep them on disk, out of history
+```
 
 ## Headline numbers (M1 Pro, 16 GB)
 

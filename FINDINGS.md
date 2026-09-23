@@ -269,10 +269,17 @@ PyTorch/MLX agreeing on the label with the network off.
 
 ### Committing weights
 
-Git stores these as full blobs, so the repo is ~3.4 GB and every clone transfers it. **GitHub
-rejects files over 100 MB** and warns above 50 MB, so a plain `git push` of `models/` fails — plan
-for `git-lfs` on `*.safetensors`, an object store, or a release asset. The 221 MB wheelhouse is
-within normal git limits.
+Git stores these as full blobs, so the repo is ~3.4 GB and every clone transfers it. GitHub's
+limits (checked 2026-09): a **100 MB per-file cap** in a plain tree, **2 GB per file** via Git LFS
+on Free/Pro, and **10 GiB/month** each of LFS storage and bandwidth. So the 644–846 MB checkpoint
+files fit in LFS's 3.0 GiB of 10 GiB storage — but every fresh clone spends ~3.0 GiB of the 10 GiB
+monthly bandwidth, and re-pushing a changed weight file bills its full size again.
+
+`git-lfs` is also **not installed here** (`git lfs version` → not a git command), so the weights
+cannot be pushed as-is; `brew install git-lfs` + `git lfs install` + a `.gitattributes` for
+`*.safetensors` would be needed. The 221 MB wheelhouse has the same problem in miniature: its
+127 MB `torch` wheel is over the 100 MB tree limit. See README.md for the re-fetch alternative and
+the commands to uncommit `models/` (nothing has been pushed, so it is a clean `reset --soft`).
 
 ## Sources
 
