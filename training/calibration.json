@@ -1,0 +1,17 @@
+{
+  "n": 300,
+  "fit_n": 150,
+  "held_n": 150,
+  "baseline_T1": {
+    "accuracy": 0.6733,
+    "nll": 1.0687,
+    "ece": 0.1213
+  },
+  "fitted_T": 1.2,
+  "fitted": {
+    "accuracy": 0.6733,
+    "nll": 1.0407,
+    "ece": 0.1117
+  },
+  "note": "single temperature on choice logits; fit on half, reported on other half"
+}

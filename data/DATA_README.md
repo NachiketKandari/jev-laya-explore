@@ -34,3 +34,18 @@ using all 3,080 real queries. Exercise 4 in the notebook lets you feel the
 uv run scripts/fetch_demo_data.py            # re-download + remap (stdlib only)
 uv run scripts/fetch_demo_data.py --force    # overwrite
 ```
+
+## Second dataset: Financial PhraseBank (sentiment)
+
+[`takala/financial_phrasebank`](https://huggingface.co/datasets/takala/financial_phrasebank):
+2,264 financial-news sentences with unanimous annotator agreement, labelled
+negative / neutral / positive. Split 80/20 (seed 7):
+
+| file | what |
+|---|---|
+| `finphrasebank_train.csv` | `sentence,label` — 1,811 rows |
+| `finphrasebank_test.csv` | `sentence,label` — 453 rows |
+
+License **CC-BY-NC-SA-3.0** (non-commercial — fine for learning/internal eval,
+not for products). Laya zero-shot with plain descriptions: **414/453 = 0.914**.
+Regenerate: `uv run scripts/fetch_finphrasebank.py [--force]`.

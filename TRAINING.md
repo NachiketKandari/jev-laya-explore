@@ -88,3 +88,19 @@ English-only, one signal per model, `predict_proba` uncalibrated.
 2. **sklearn** if labels are fixed and labelled data exists (see `COMPARISON.md`).
 3. **Fine-tune Laya** if the schema is yours, labels shift, or you need
    choice+score+noul with calibrated probabilities in one pass.
+
+## Session 1 on this Mac (2026-09-23, M1 Pro 16 GB)
+
+`scripts/train_laya_local.py`, Banking77 coarse-7, reports in `training/`.
+Weights (`training/heads/*.pt`, 106 MB) stay local — gitignored, reproduce
+with the script.
+
+| stage | result on held-out 300 (seed 7) |
+|---|---|
+| `calibrate` (fit T on 150, report on 150) | T=1.2: NLL 1.069 → 1.041, ECE 0.121 → 0.112, acc unchanged |
+| `head` (frozen encoder, AdamW 1e-4, 3000 rows × 2 epochs, 8.6 min) | acc 0.693 → 0.693, NLL 0.995 → 0.927, ECE 0.106 → 0.080 |
+
+Honest read: 2 epochs at 1e-4 moved **probabilities, not argmaxes** — better
+calibrated, same accuracy. The loss curve fell within each epoch, so it is
+learning; accuracy likely needs more epochs, higher lr, or unfreezing the top
+encoder layers (LoRA). That is session 2, not this one.

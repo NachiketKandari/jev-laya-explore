@@ -16,6 +16,11 @@ __pycache__/
 # Nothing in this project imports it.
 localjev/
 
+# Local training outputs: reports (*.json) are committed, weight files are not
+# (~100MB each -- over GitHub's 100MB/file cap). Reproduce with
+# `uv run scripts/train_laya_local.py --stage head`.
+training/heads/*.pt
+
 # ---------------------------------------------------------------------------
 # These ARE committed on purpose, despite their size:
 #   models/          3.2 GB of checkpoints  (scripts/fetch_models.py re-fetches them)

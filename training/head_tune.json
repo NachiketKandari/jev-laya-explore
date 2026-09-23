@@ -1,0 +1,41 @@
+{
+  "baseline": {
+    "accuracy": 0.6933,
+    "nll": 0.9947,
+    "ece": 0.1058
+  },
+  "final": {
+    "accuracy": 0.6933,
+    "nll": 0.9268,
+    "ece": 0.0797
+  },
+  "curve": [
+    {
+      "step": 250,
+      "loss": 0.8263,
+      "accuracy": 0.68,
+      "nll": 0.9724,
+      "ece": 0.0821
+    },
+    {
+      "step": 500,
+      "loss": 1.1305,
+      "accuracy": 0.69,
+      "nll": 0.9224,
+      "ece": 0.0687
+    },
+    {
+      "step": 750,
+      "loss": 0.8182,
+      "accuracy": 0.6933,
+      "nll": 0.9268,
+      "ece": 0.0797
+    }
+  ],
+  "epochs": 2,
+  "train_n": 3000,
+  "batch": 8,
+  "lr": 0.0001,
+  "minutes": 8.6,
+  "weights": "training/heads/head_bfsi7_e2_n3000.pt (local only, gitignored)"
+}
