@@ -1,0 +1,19 @@
+[project]
+name = "jev-laya-test"
+version = "0.1.0"
+description = "Local System 1 typed-decision classification with Laya, and how it relates to Jev"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    # The two runtimes measured in FINDINGS.md. Pinned exactly: the numbers in
+    # README.md/FINDINGS.md were produced against these versions.
+    "laya==0.3.5",
+    "laya-mlx==0.2.0",
+]
+
+[dependency-groups]
+dev = []
+
+# No build backend: this is a virtual project (scripts only), so `uv sync` must not
+# try to build and install the project itself.
+[tool.uv]
+package = false

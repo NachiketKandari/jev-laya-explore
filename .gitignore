@@ -1,0 +1,25 @@
+# The uv-managed environment; rebuild with `uv sync --frozen`.
+.venv/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+.DS_Store
+
+# Agent tooling scratch directory
+.freebuff/
+
+# Upstream reference clone (read-only, ships its own .git, so adding it would create a
+# broken gitlink). Reproduce with:
+#   git clone https://github.com/githubnext/localjev
+# Nothing in this project imports it.
+localjev/
+
+# ---------------------------------------------------------------------------
+# These ARE committed on purpose, despite their size:
+#   models/          3.2 GB of checkpoints  (scripts/fetch_models.py re-fetches them)
+#   vendor/wheels/   221 MB wheelhouse      (enables a fully offline `uv pip install`)
+#   uv.lock          resolved dependency graph behind `uv sync --frozen`
+# See README.md "Committing 3.2 GB of weights" for the 100 MB/file push caveat.
+# ---------------------------------------------------------------------------
