@@ -53,7 +53,7 @@ plug in your local MLX model where indicated). No data leaves the machine.
 |---|---|
 | TF-IDF + LogReg (trained) | beats it: 0.927, µs/doc — for frozen labels |
 | bart-large-mnli zero-shot (407M) | loses: 0.533 at 122 ms/doc (7 passes) |
-| Jev (hosted) | cited 0.870 on harder 77-label task; disqualified on residency |
+| Jev (hosted) | measured 0.793 zero-shot (+0.100 over Laya, 463 ms, ~2¢/1k calls); disqualified on residency for sensitive data |
 | LLM-as-judge / guard LLMs | 8B+ generative, slower, GPU-hungry; better prose, worse decisions-per-ms |
 | Laya fine-tuned | the actual favourite: upstream precedent says it closes the gap |
 

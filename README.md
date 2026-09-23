@@ -48,7 +48,7 @@ uv run laya_classify.py "the API returns 500 on every request"
 # notebook: 3,080 real bank queries -> 7 categories, no training
 # (open notebooks/laya_customer_classification.ipynb in Jupyter/VS Code)
 
-# head-to-head: Laya vs TF-IDF+LogReg (measured) vs Jev (cited)
+# head-to-head: Laya vs Jev vs TF-IDF+LogReg (all measured)
 uv run --with scikit-learn scripts/bench_comparison.py   # see COMPARISON.md + TRAINING.md
 
 # Laya + LLM coupling (gate + router, stub LLM, fully local)

@@ -44,5 +44,16 @@
     "p50_ms": 121.9,
     "mean_ms": 128.6,
     "train_rows": 0
+  },
+  "jev_measured": {
+    "variant": "typesafe/jev-1.13 via OpenRouter decisions endpoint, same 7 criteria+state as Laya",
+    "model": "typesafe/jev-1.13-20260917",
+    "accuracy": 0.7933,
+    "p50_ms": 463.1,
+    "mean_ms": 479.7,
+    "total_cost_usd": 0.0064,
+    "cost_per_1k_calls_usd": 0.0213,
+    "train_rows": 0,
+    "detail_file": "benchmarks/jev_banking77_coarse7.json"
   }
 }

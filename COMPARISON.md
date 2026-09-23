@@ -1,34 +1,41 @@
 # Laya vs Jev vs TF-IDF+LogReg on Banking77 coarse-7
 
-Same 300 queries (seed 7), same 7 labels, M1 Pro 16 GB. Raw numbers live in
-`benchmarks/banking77_coarse7.json` — regenerate with:
+Same 300 queries (seed 7), same 7 labels, M1 Pro 16 GB. Laya/sklearn/NLI ran
+here; **Jev ran for real too** (`typesafe/jev-1.13-20260917` via OpenRouter's
+`/api/alpha/decisions`, key from `../idirect-playwright/.env`, ~$0.006 total).
+Raw numbers in `benchmarks/banking77_coarse7.json` (+ per-row
+`benchmarks/jev_banking77_coarse7.json`) — regenerate with:
 
 ```bash
 uv run --with scikit-learn scripts/bench_comparison.py
 uv run --with scikit-learn scripts/bench_comparison.py --nli   # + bart-large-mnli zero-shot (~1.6GB dl, minutes)
+uv run scripts/bench_jev.py                                    # needs $OPENROUTER_API_KEY (never logged)
 ```
 
 (`--with` keeps scikit-learn out of `pyproject.toml`; it is a benchmark-only dep.)
 
 ## Result
 
-| | Laya (measured) | TF-IDF + LogReg (measured) | NLI zero-shot (measured) | Jev (cited, not measured) |
+| | Laya (measured) | Jev (measured) | TF-IDF + LogReg (measured) | NLI zero-shot (measured) |
 |---|---|---|---|---|
-| accuracy | 0.693 | **0.927** | 0.533 | 0.870* |
-| label space | 7 coarse, zero-shot | 7 coarse, trained | 7 coarse, zero-shot | *77 full intents* |
-| training data | none (7 descriptions) | 10,003 labelled rows, 0.8 s CPU | none | none (API) |
-| latency | p50 51 ms / p95 62 ms | **0.23 ms single, 0.01 ms batch** | p50 122 ms (7 passes/doc) | 236–276 ms p50 |
-| cost | $0 self-hosted, Apache-2.0 | $0, sklearn BSD | $0, BART MIT | $0.042 / 1M tokens, closed |
-| calibration | temperatures to fit | `predict_proba` (uncalibrated) | entailment scores (uncalibrated) | published ECE 0.246 raw |
+| accuracy | 0.693 | 0.793 | **0.927** | 0.533 |
+| label space | 7 coarse, zero-shot | 7 coarse, zero-shot | 7 coarse, trained | 7 coarse, zero-shot |
+| training data | none (7 descriptions) | none (API) | 10,003 labelled rows, 0.8 s CPU | none |
+| latency | p50 51 ms / p95 62 ms | p50 463 ms | **0.23 ms single, 0.01 ms batch** | p50 122 ms (7 passes/doc) |
+| cost | $0 self-hosted, Apache-2.0 | $0.021 / 1k calls, closed | $0, sklearn BSD | $0, BART MIT |
+| calibration | temperatures to fit | conf 0.94 right / 0.74 wrong; 16 rows zero-prob on gold | `predict_proba` (uncalibrated) | entailment scores (uncalibrated) |
 
-\* Jev's 0.870 is on the **full 77-label** task (harder per-guess than 7-way, so not
-directly comparable) and is **published by others, never run here** — no TypeSafe
-key, and it is a paid hosted API. Sources: `NandhaKishorM/laya` README/BENCHMARKS.md
-table, latency via `AbdelStark/jev-benchmarks` and `nibzard/decision-model-benchmark`.
+Jev's published 0.870 is on the **full 77-label** task (harder per-guess than
+7-way) — on our shared 7-label sample it scores **0.793**, +0.100 over Laya,
+at 9× the latency and ~2¢/1k calls. Its per-class best: fees_charges 0.931,
+account_identity 0.900; worst: transfers 0.675. The 16 zero-probability-on-gold
+rows echo the upstream DAIR-Emotion finding, at 5% here instead of 16%.
 
 ## Reading it honestly
 
-- **sklearn wins this task outright** — 0.927 at microseconds per doc. Single
+- **Jev is the best zero-shot option measured** — 0.793, +0.100 over Laya on
+  identical inputs. You pay 463 ms and data-leaves-the-building per call.
+- **sklearn wins the task outright** — 0.927 at microseconds per doc. Single
   English domain + 10k labels is exactly what linear models are for. If your
   labels are fixed and you have labels, start here.
 - **NLI zero-shot is not "better Laya" here** — bart-large-mnli (407M, same size
@@ -51,12 +58,10 @@ notebook. Vary `--n`, `--seed`, edit descriptions in `data/coarse_labels.json`.
 `LinearSVC`, `ComplementNB`, or char n-grams; add a 77-label run to feel why
 Laya's shortlist section exists.
 
-**Jev** — to measure it yourself on this sample: get a TypeSafe key, POST each
-`{state: {message}, questions: {label: {type: choice, ...same 7 criteria}}}` to
-`/v1/systemone`, and score `answers.label.choice` against `gold`. Keep prompts
-byte-identical and report seed, n, and label count — the upstream table mixes
-72 vs 77 labels and different samples, which is why this doc refuses to rank Jev
-against the two measured columns.
+**Jev** — `scripts/bench_jev.py` (same sample, same criteria; key from
+`$OPENROUTER_API_KEY` or `../idirect-playwright/.env`, never logged). To extend:
+vary `--n`, add `score`/`noul` questions, or run the full 77-label task to check
+the published 0.870 yourself.
 
 ## Tradeoffs
 
@@ -69,5 +74,6 @@ against the two measured columns.
 ## Limits of this benchmark
 
 300 rows (10% of test), coarse-7 not the standard 77-label task, Laya zero-shot
-only, sklearn English-only, Jev cited. It answers "what should I reach for?"
-not "what is SOTA?".
+only, sklearn English-only. Jev measured over the network from India (p50
+463 ms vs 236–276 ms in US/EU third-party runs — geography + prompt size).
+It answers "what should I reach for?" not "what is SOTA?".

@@ -1,0 +1,5115 @@
+{
+ "meta": {
+  "model": "typesafe/jev-1.13-20260917",
+  "endpoint": "openrouter /api/alpha/decisions",
+  "n": 300,
+  "seed": 7,
+  "accuracy": 0.7933,
+  "p50_ms": 463.1,
+  "mean_ms": 479.7,
+  "total_cost_usd": 0.0064,
+  "labels": "same 7 coarse groups + full descriptions as Laya"
+ },
+ "rows": [
+  {
+   "text": "Is there an option to top up a with cheque?",
+   "fine": "top_up_by_cash_or_cheque",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "help_info": 0,
+    "account_identity": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "cards": 0,
+    "topup": 1,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "Why did I get charged a fee when I tried to obtain cash?",
+   "fine": "cash_withdrawal_charge",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "topup": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 1,
+    "help_info": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "My card isn't working",
+   "fine": "card_not_working",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "topup": 0,
+    "fees_charges": 0,
+    "cards": 1,
+    "help_info": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "Can you remove my account please?",
+   "fine": "terminate_account",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 1,
+    "topup": 0,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "fees_charges": 0,
+    "help_info": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "As for limits are top ups included?",
+   "fine": "top_up_limits",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "topup": 1,
+    "account_identity": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "I cannot make transactions with my virtual card.",
+   "fine": "virtual_card_not_working",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 1,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "topup": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "Is there something wrong with your website? I tried topping up my account and it's been close to two hours now and it's still at \"pending\" for some reason. I just joined with you guys and this is the first attempt at this, so maybe I'm wrong, but shouldn't this be instant?",
+   "fine": "pending_top_up",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "fees_charges": 0,
+    "topup": 1,
+    "refunds_disputes": 0,
+    "cards": 0,
+    "help_info": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "I desperately need to change my PIN, but I'm overseas on vacation right now. How can I do this?",
+   "fine": "change_pin",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "fees_charges": 0,
+    "help_info": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "cards": 1
+   }
+  },
+  {
+   "text": "Can someone please assist me with finding my nearest ATM?",
+   "fine": "atm_support",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 0.97,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "help_info": 0.98,
+    "account_identity": 0,
+    "cards": 0.01,
+    "refunds_disputes": 0,
+    "topup": 0.01,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "Why was I overcharged a pound!?",
+   "fine": "extra_charge_on_statement",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 0.98,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0.01,
+    "cards": 0,
+    "account_identity": 0,
+    "help_info": 0,
+    "fees_charges": 0.99,
+    "transfers": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "How old do my kids have to be to use your service?",
+   "fine": "age_limit",
+   "gold": "account_identity",
+   "pred": "help_info",
+   "confidence": 0.84,
+   "correct": false,
+   "probabilities": {
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "account_identity": 0.14,
+    "topup": 0,
+    "help_info": 0.86,
+    "cards": 0
+   }
+  },
+  {
+   "text": "My entire gym bag, including my wallet, was stolen out of my locker today. Everything in my wallet is gone - how do I block the card to make it can't be used?",
+   "fine": "lost_or_stolen_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "account_identity": 0,
+    "cards": 1
+   }
+  },
+  {
+   "text": "I got charged and extra fee when I transferred money so why was I charged?",
+   "fine": "transfer_fee_charged",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 0.97,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0.02,
+    "refunds_disputes": 0,
+    "fees_charges": 0.98,
+    "account_identity": 0,
+    "topup": 0,
+    "help_info": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "How do I cancel a previous purchase",
+   "fine": "request_refund",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "cards": 0,
+    "help_info": 0,
+    "account_identity": 0,
+    "transfers": 0,
+    "refunds_disputes": 1,
+    "topup": 0
+   }
+  },
+  {
+   "text": "The exchange rate seems off on this transaction",
+   "fine": "card_payment_wrong_exchange_rate",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "help_info": 0,
+    "fees_charges": 0.99,
+    "cards": 0,
+    "transfers": 0.01
+   }
+  },
+  {
+   "text": "I want to top up using cash, where can I do that?",
+   "fine": "top_up_by_cash_or_cheque",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "cards": 0,
+    "account_identity": 0,
+    "help_info": 0,
+    "fees_charges": 0,
+    "transfers": 0,
+    "topup": 1
+   }
+  },
+  {
+   "text": "how do i change name?",
+   "fine": "edit_personal_details",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "topup": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "account_identity": 1
+   }
+  },
+  {
+   "text": "How can I create many temporary cards daily?",
+   "fine": "disposable_card_limits",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "cards": 0.99,
+    "topup": 0,
+    "fees_charges": 0,
+    "help_info": 0.01,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "How can I fix a problem where my virtual card is rejected?",
+   "fine": "virtual_card_not_working",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.98,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "refunds_disputes": 0.01,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "help_info": 0,
+    "cards": 0.99,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "What do I do for the identity check?",
+   "fine": "verify_my_identity",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "account_identity": 1,
+    "cards": 0
+   }
+  },
+  {
+   "text": "How can my friend transfer money to me?",
+   "fine": "receiving_money",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 1,
+    "help_info": 0,
+    "account_identity": 0,
+    "cards": 0,
+    "refunds_disputes": 0,
+    "topup": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "Why was my Payment declined",
+   "fine": "declined_card_payment",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "help_info": 0,
+    "account_identity": 0,
+    "refunds_disputes": 1,
+    "transfers": 0,
+    "cards": 0,
+    "topup": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "Hello. Can you tell me if you use Visa or Mastercard?",
+   "fine": "visa_or_mastercard",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 0.94,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "cards": 0.03,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "transfers": 0,
+    "help_info": 0.95,
+    "topup": 0.02
+   }
+  },
+  {
+   "text": "Where can I obtain my virtual card?",
+   "fine": "getting_virtual_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "cards": 1,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "topup": 0,
+    "help_info": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "Is it permissible to hold money in multiple currencies?",
+   "fine": "fiat_currency_support",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "fees_charges": 0,
+    "transfers": 0,
+    "help_info": 1,
+    "topup": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "Where is my cash deposit?",
+   "fine": "balance_not_updated_after_cheque_or_cash_deposit",
+   "gold": "help_info",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": false,
+   "probabilities": {
+    "help_info": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "topup": 1,
+    "cards": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "I tried verifying my ID, but it won't let me.",
+   "fine": "unable_to_verify_identity",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "help_info": 0,
+    "fees_charges": 0,
+    "account_identity": 1,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "cards": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "What are the rules to where I can use my card?",
+   "fine": "card_acceptance",
+   "gold": "cards",
+   "pred": "help_info",
+   "confidence": 0.59,
+   "correct": false,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 0,
+    "help_info": 0.65,
+    "transfers": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "cards": 0.35
+   }
+  },
+  {
+   "text": "My new pin needs to be set.",
+   "fine": "change_pin",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "topup": 0,
+    "help_info": 0,
+    "cards": 1,
+    "fees_charges": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "I think someone got my card details and used it because there are transactions i don't recognize. What do I do now?",
+   "fine": "compromised_card",
+   "gold": "cards",
+   "pred": "refunds_disputes",
+   "confidence": 0.79,
+   "correct": false,
+   "probabilities": {
+    "cards": 0.17,
+    "fees_charges": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "topup": 0,
+    "refunds_disputes": 0.83,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "If the transfer details have already but reviewed and confirmed that they are correct, what other reason would cause my transfer to be declined?",
+   "fine": "declined_transfer",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "help_info": 0,
+    "cards": 0,
+    "transfers": 1
+   }
+  },
+  {
+   "text": "Which ATMs accept this card?",
+   "fine": "atm_support",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 0.6,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "cards": 0.34,
+    "help_info": 0.66,
+    "topup": 0
+   }
+  },
+  {
+   "text": "The app doesn't show the card I received.",
+   "fine": "card_linking",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.85,
+   "correct": true,
+   "probabilities": {
+    "cards": 0.88,
+    "refunds_disputes": 0,
+    "transfers": 0.12,
+    "topup": 0,
+    "help_info": 0,
+    "account_identity": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "How long do transfers need to come through? I sent some money to a friend, she needs it urgently, but seems it's still not there yet after a couple hours.",
+   "fine": "transfer_not_received_by_recipient",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "refunds_disputes": 0,
+    "help_info": 0,
+    "cards": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "transfers": 1
+   }
+  },
+  {
+   "text": "What ATMs is the card okay to use at?",
+   "fine": "atm_support",
+   "gold": "help_info",
+   "pred": "cards",
+   "confidence": 0.54,
+   "correct": false,
+   "probabilities": {
+    "help_info": 0.39,
+    "transfers": 0,
+    "account_identity": 0,
+    "topup": 0,
+    "fees_charges": 0,
+    "cards": 0.61,
+    "refunds_disputes": 0
+   }
+  },
+  {
+   "text": "Where do I find the top-up verification code?",
+   "fine": "verify_top_up",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 0.98,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "topup": 0.98,
+    "help_info": 0,
+    "cards": 0,
+    "fees_charges": 0,
+    "account_identity": 0.02
+   }
+  },
+  {
+   "text": "Why would my topup not go through?",
+   "fine": "top_up_failed",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "topup": 1,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "The rate of exchange for my card payment is incorrect",
+   "fine": "card_payment_wrong_exchange_rate",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "help_info": 0,
+    "transfers": 0,
+    "cards": 0,
+    "topup": 0,
+    "fees_charges": 1
+   }
+  },
+  {
+   "text": "Can I use my American Express to add money to my account?",
+   "fine": "supported_cards_and_currencies",
+   "gold": "help_info",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": false,
+   "probabilities": {
+    "cards": 0,
+    "refunds_disputes": 0,
+    "help_info": 0,
+    "topup": 1,
+    "transfers": 0,
+    "account_identity": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "I would like to delete my account please.",
+   "fine": "terminate_account",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 1,
+    "fees_charges": 0,
+    "help_info": 0,
+    "cards": 0,
+    "refunds_disputes": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "I just lost my wallet and I see that they are already withdrawing money from my account. How can I stop this?",
+   "fine": "cash_withdrawal_not_recognised",
+   "gold": "refunds_disputes",
+   "pred": "cards",
+   "confidence": 0.69,
+   "correct": false,
+   "probabilities": {
+    "help_info": 0,
+    "fees_charges": 0,
+    "topup": 0,
+    "refunds_disputes": 0.26,
+    "cards": 0.73,
+    "account_identity": 0,
+    "transfers": 0.01
+   }
+  },
+  {
+   "text": "There is an extra $1 charge",
+   "fine": "extra_charge_on_statement",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "help_info": 0,
+    "transfers": 0,
+    "cards": 0,
+    "topup": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "fees_charges": 1
+   }
+  },
+  {
+   "text": "Why is my card payment showing as pending?",
+   "fine": "pending_card_payment",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 0.76,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "cards": 0.14,
+    "account_identity": 0,
+    "help_info": 0.05,
+    "refunds_disputes": 0.79,
+    "transfers": 0.01,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Help!  My wallet was stolen and someone is taking money out.  I need this money!  What can I do?",
+   "fine": "cash_withdrawal_not_recognised",
+   "gold": "refunds_disputes",
+   "pred": "cards",
+   "confidence": 0.74,
+   "correct": false,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 0.01,
+    "fees_charges": 0,
+    "refunds_disputes": 0.21,
+    "cards": 0.78,
+    "help_info": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "What is the fastest that I can make a transfer?",
+   "fine": "transfer_timing",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 0,
+    "fees_charges": 0,
+    "cards": 0,
+    "refunds_disputes": 0,
+    "transfers": 1,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "I'd like to cancel a transfer",
+   "fine": "cancel_transfer",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 1,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "cards": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "My transfer didn't work",
+   "fine": "failed_transfer",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "transfers": 1,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "topup": 0,
+    "help_info": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "I'm quite confused as to what is going on. There is some odd extra pound charge on my statement in the app that's just listed as pending and doesn't go away since a couple days.",
+   "fine": "extra_charge_on_statement",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "transfers": 0,
+    "cards": 0,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 1,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Why is there a pending transaction on my card?",
+   "fine": "pending_card_payment",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 0.39,
+   "correct": true,
+   "probabilities": {
+    "cards": 0.37,
+    "fees_charges": 0.05,
+    "transfers": 0.02,
+    "help_info": 0.07,
+    "topup": 0,
+    "refunds_disputes": 0.49,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "I made a mistake with a transaction!",
+   "fine": "cancel_transfer",
+   "gold": "transfers",
+   "pred": "refunds_disputes",
+   "confidence": 0.58,
+   "correct": false,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 0,
+    "transfers": 0.35,
+    "refunds_disputes": 0.64,
+    "cards": 0,
+    "help_info": 0,
+    "fees_charges": 0.01
+   }
+  },
+  {
+   "text": "I tried to make a transfer, but it was declined. Can you tell me why?",
+   "fine": "declined_transfer",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "help_info": 0,
+    "transfers": 1,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Is there a limit to top-up amounts?",
+   "fine": "top_up_limits",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "cards": 0,
+    "fees_charges": 0,
+    "topup": 1,
+    "help_info": 0,
+    "account_identity": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "Cancel my last transfer",
+   "fine": "cancel_transfer",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 1,
+    "account_identity": 0,
+    "fees_charges": 0,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "cards": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Is it acceptable to use my card anywhere?",
+   "fine": "card_acceptance",
+   "gold": "cards",
+   "pred": "help_info",
+   "confidence": 0.75,
+   "correct": false,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 0,
+    "fees_charges": 0,
+    "cards": 0.21,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "help_info": 0.79
+   }
+  },
+  {
+   "text": "Has someone accessed my card there are payments I did not make that are showing up on the app.",
+   "fine": "card_payment_not_recognised",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 0.96,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "topup": 0,
+    "help_info": 0,
+    "transfers": 0,
+    "refunds_disputes": 0.97,
+    "cards": 0.03,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "I am not satisfied with your company and would like to delete my accounts!",
+   "fine": "terminate_account",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "topup": 0,
+    "fees_charges": 0,
+    "help_info": 0,
+    "account_identity": 1,
+    "transfers": 0,
+    "refunds_disputes": 0
+   }
+  },
+  {
+   "text": "Where am I able to use the card?",
+   "fine": "card_acceptance",
+   "gold": "cards",
+   "pred": "help_info",
+   "confidence": 0.69,
+   "correct": false,
+   "probabilities": {
+    "topup": 0,
+    "cards": 0.26,
+    "fees_charges": 0,
+    "transfers": 0,
+    "help_info": 0.74,
+    "account_identity": 0,
+    "refunds_disputes": 0
+   }
+  },
+  {
+   "text": "How do I pay by check?",
+   "fine": "top_up_by_cash_or_cheque",
+   "gold": "topup",
+   "pred": "transfers",
+   "confidence": 0.4,
+   "correct": false,
+   "probabilities": {
+    "help_info": 0.38,
+    "fees_charges": 0,
+    "topup": 0.12,
+    "refunds_disputes": 0,
+    "cards": 0,
+    "account_identity": 0,
+    "transfers": 0.5
+   }
+  },
+  {
+   "text": "The app said I withdrew cash at an ATM and I didn't",
+   "fine": "cash_withdrawal_not_recognised",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 0.97,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0.98,
+    "help_info": 0,
+    "topup": 0,
+    "account_identity": 0,
+    "cards": 0.02
+   }
+  },
+  {
+   "text": "My disposable card seems not to be working am I doing something wrong?",
+   "fine": "virtual_card_not_working",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "cards": 1,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "topup": 0,
+    "fees_charges": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "Are US credit cards accepted?",
+   "fine": "supported_cards_and_currencies",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 0.96,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "account_identity": 0,
+    "transfers": 0,
+    "help_info": 0.97,
+    "topup": 0.02,
+    "cards": 0.01,
+    "refunds_disputes": 0
+   }
+  },
+  {
+   "text": "Why is my money gone right when I attempted to top up",
+   "fine": "topping_up_by_card",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "topup": 1,
+    "help_info": 0,
+    "transfers": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "What countries are supported?",
+   "fine": "country_support",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "transfers": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "help_info": 1,
+    "cards": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "Help me.  There is a Direct Debit that I didn't make.",
+   "fine": "direct_debit_payment_not_recognised",
+   "gold": "transfers",
+   "pred": "refunds_disputes",
+   "confidence": 0.52,
+   "correct": false,
+   "probabilities": {
+    "fees_charges": 0,
+    "topup": 0,
+    "help_info": 0,
+    "refunds_disputes": 0.59,
+    "account_identity": 0,
+    "transfers": 0.41,
+    "cards": 0
+   }
+  },
+  {
+   "text": "What is the process of obtaining a disposable virtual card",
+   "fine": "get_disposable_virtual_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "help_info": 0,
+    "account_identity": 0,
+    "transfers": 0,
+    "cards": 1,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Why was I not able to complete a transfer?",
+   "fine": "failed_transfer",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "cards": 0,
+    "transfers": 1,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "Why was I charged a fee for withdrawing cash?",
+   "fine": "cash_withdrawal_charge",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 1,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "account_identity": 0,
+    "cards": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "There is a direct debit I do not recognise in my statement",
+   "fine": "direct_debit_payment_not_recognised",
+   "gold": "transfers",
+   "pred": "refunds_disputes",
+   "confidence": 0.65,
+   "correct": false,
+   "probabilities": {
+    "cards": 0,
+    "topup": 0,
+    "fees_charges": 0,
+    "transfers": 0.3,
+    "account_identity": 0,
+    "refunds_disputes": 0.7,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "Is my card broken?",
+   "fine": "card_not_working",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 1,
+    "fees_charges": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "topup": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "Is it possible to deposit money in GBP?",
+   "fine": "receiving_money",
+   "gold": "transfers",
+   "pred": "topup",
+   "confidence": 0.69,
+   "correct": false,
+   "probabilities": {
+    "transfers": 0,
+    "account_identity": 0,
+    "help_info": 0.26,
+    "refunds_disputes": 0,
+    "cards": 0,
+    "topup": 0.74,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "The app won't let me top up my account",
+   "fine": "top_up_failed",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 1,
+    "account_identity": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "help_info": 0,
+    "cards": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "How do I avoid getting charged a fee on my card?",
+   "fine": "card_payment_fee_charged",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 0.93,
+   "correct": true,
+   "probabilities": {
+    "cards": 0.03,
+    "account_identity": 0,
+    "topup": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0.94,
+    "help_info": 0.03
+   }
+  },
+  {
+   "text": "I only own one other credit card from the USA. Will it be accepted?",
+   "fine": "supported_cards_and_currencies",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 0.85,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0.02,
+    "fees_charges": 0,
+    "help_info": 0.88,
+    "cards": 0.05,
+    "transfers": 0,
+    "account_identity": 0,
+    "topup": 0.05
+   }
+  },
+  {
+   "text": "How do I change my address?",
+   "fine": "edit_personal_details",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "topup": 0,
+    "fees_charges": 0,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "account_identity": 1
+   }
+  },
+  {
+   "text": "got married, need to change account name",
+   "fine": "edit_personal_details",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "transfers": 0,
+    "account_identity": 1,
+    "cards": 0,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "I need some spare physical cards.",
+   "fine": "getting_spare_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "cards": 1,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "account_identity": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "why was my transfer declined",
+   "fine": "declined_transfer",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "transfers": 1,
+    "cards": 0,
+    "account_identity": 0,
+    "help_info": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "I noticed after looking over my transactions that I have been charged twice from an earlier restaurant visit this week. Is it possible that one of these can be removed so I get the money back for the one that is not accurate?",
+   "fine": "transaction_charged_twice",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 0.81,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "fees_charges": 0.84,
+    "transfers": 0,
+    "help_info": 0,
+    "topup": 0,
+    "refunds_disputes": 0.16,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "Can you help me find top up by cash deposit?",
+   "fine": "top_up_by_cash_or_cheque",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 1,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "cards": 0,
+    "help_info": 0,
+    "account_identity": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "What happens if my card is stuck in the ATM?",
+   "fine": "card_swallowed",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "help_info": 0.01,
+    "refunds_disputes": 0,
+    "topup": 0,
+    "cards": 0.99
+   }
+  },
+  {
+   "text": "I just have one other card from the US. Is that okay?",
+   "fine": "supported_cards_and_currencies",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 0.42,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0.01,
+    "cards": 0.37,
+    "transfers": 0,
+    "topup": 0.11,
+    "help_info": 0.51,
+    "refunds_disputes": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "How can I transfer money to my account?",
+   "fine": "transfer_into_account",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 0.65,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "cards": 0,
+    "topup": 0.3,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "help_info": 0,
+    "transfers": 0.7
+   }
+  },
+  {
+   "text": "Is there a reason why my account isn't updating because I used a check to  balance my account?",
+   "fine": "balance_not_updated_after_cheque_or_cash_deposit",
+   "gold": "help_info",
+   "pred": "topup",
+   "confidence": 0.52,
+   "correct": false,
+   "probabilities": {
+    "fees_charges": 0,
+    "help_info": 0.12,
+    "refunds_disputes": 0.08,
+    "transfers": 0.21,
+    "account_identity": 0,
+    "cards": 0,
+    "topup": 0.59
+   }
+  },
+  {
+   "text": "I want to top-up using cash",
+   "fine": "top_up_by_cash_or_cheque",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "topup": 1,
+    "fees_charges": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "I need to know your exchange rates.",
+   "fine": "exchange_rate",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "topup": 0,
+    "fees_charges": 0,
+    "cards": 0,
+    "help_info": 1,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "What's with not verifying my Id?",
+   "fine": "unable_to_verify_identity",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "cards": 0,
+    "account_identity": 1,
+    "fees_charges": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "areas card is accpeted",
+   "fine": "card_acceptance",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.47,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "account_identity": 0,
+    "transfers": 0,
+    "refunds_disputes": 0.06,
+    "help_info": 0.33,
+    "cards": 0.55,
+    "topup": 0.06
+   }
+  },
+  {
+   "text": "I still haven't seen a refund on my account",
+   "fine": "Refund_not_showing_up",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 1,
+    "topup": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "I want to make a currency exchange to EU.",
+   "fine": "fiat_currency_support",
+   "gold": "help_info",
+   "pred": "transfers",
+   "confidence": 0.68,
+   "correct": false,
+   "probabilities": {
+    "cards": 0,
+    "topup": 0,
+    "transfers": 0.73,
+    "help_info": 0.26,
+    "fees_charges": 0.01,
+    "refunds_disputes": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "do i need a pin",
+   "fine": "get_physical_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "help_info": 0,
+    "topup": 0,
+    "cards": 1,
+    "refunds_disputes": 0
+   }
+  },
+  {
+   "text": "I want to set a new PIN",
+   "fine": "change_pin",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "refunds_disputes": 0,
+    "cards": 1,
+    "help_info": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "Are you able to locate my card?",
+   "fine": "lost_or_stolen_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "topup": 0,
+    "fees_charges": 0,
+    "cards": 1,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "Do I need to choose GBP to get my salary deposited properly?",
+   "fine": "receiving_money",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 0.42,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0.02,
+    "cards": 0,
+    "transfers": 0.51,
+    "topup": 0,
+    "help_info": 0.47,
+    "refunds_disputes": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "Delete this account!",
+   "fine": "terminate_account",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 1,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "help_info": 0,
+    "cards": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "I received my American Express card, but I am having problems making it work with Apple pay.  Can you help me with this problem?",
+   "fine": "apple_pay_or_google_pay",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "help_info": 0.01,
+    "cards": 0.99,
+    "fees_charges": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "How much is the charge to top up my card?",
+   "fine": "top_up_by_card_charge",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 0.75,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "topup": 0.79,
+    "help_info": 0,
+    "cards": 0,
+    "fees_charges": 0.21,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "How can I unlock my pin from too many tries?",
+   "fine": "pin_blocked",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "account_identity": 0.01,
+    "topup": 0,
+    "refunds_disputes": 0,
+    "cards": 0.99,
+    "help_info": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "Can you help me sign up for a virtual card?",
+   "fine": "getting_virtual_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "transfers": 0,
+    "account_identity": 0,
+    "cards": 1
+   }
+  },
+  {
+   "text": "Can I make transfers before identity verification?",
+   "fine": "why_verify_identity",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 0.56,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "refunds_disputes": 0,
+    "cards": 0,
+    "fees_charges": 0,
+    "help_info": 0,
+    "account_identity": 0.62,
+    "transfers": 0.38
+   }
+  },
+  {
+   "text": "My account needs to be deleted.",
+   "fine": "terminate_account",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "cards": 0,
+    "account_identity": 1,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Can I receive a refund for my item?",
+   "fine": "request_refund",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "cards": 0,
+    "fees_charges": 0,
+    "topup": 0,
+    "help_info": 0,
+    "account_identity": 0,
+    "refunds_disputes": 1
+   }
+  },
+  {
+   "text": "I double checked that I have the correct account details , they're right for sure. Transfer is still pending since forever. What should be done now?",
+   "fine": "pending_transfer",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 1,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "cards": 0,
+    "help_info": 0,
+    "fees_charges": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "How are exchange rates calculated?",
+   "fine": "exchange_rate",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "help_info": 1,
+    "topup": 0,
+    "fees_charges": 0,
+    "cards": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "How can I top up with Google Pay?",
+   "fine": "apple_pay_or_google_pay",
+   "gold": "cards",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": false,
+   "probabilities": {
+    "cards": 0,
+    "topup": 1,
+    "transfers": 0,
+    "help_info": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "What currencies do you do exchanges for?",
+   "fine": "fiat_currency_support",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "help_info": 1,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "account_identity": 0,
+    "cards": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Do you know what the restriction of the disposable cards are?",
+   "fine": "disposable_card_limits",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.68,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "cards": 0.72,
+    "help_info": 0.27,
+    "account_identity": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "topup": 0.01
+   }
+  },
+  {
+   "text": "I made a payment that got charged twice instead of once.",
+   "fine": "transaction_charged_twice",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 0.95,
+   "correct": true,
+   "probabilities": {
+    "help_info": 0,
+    "fees_charges": 0.96,
+    "topup": 0,
+    "refunds_disputes": 0.04,
+    "cards": 0,
+    "account_identity": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "Where do I order a virtual card from?",
+   "fine": "getting_virtual_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "help_info": 0,
+    "topup": 0,
+    "fees_charges": 0,
+    "cards": 1
+   }
+  },
+  {
+   "text": "how old do i need to be to get an account for myself",
+   "fine": "age_limit",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 0.63,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "account_identity": 0.6900000000000001,
+    "cards": 0,
+    "help_info": 0.31,
+    "fees_charges": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "I would like to transfer some money from my other bank account into this one.",
+   "fine": "transfer_into_account",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 0.88,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0.9,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "cards": 0,
+    "help_info": 0,
+    "topup": 0.1
+   }
+  },
+  {
+   "text": "Why do I have to verify my identity?",
+   "fine": "why_verify_identity",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 1,
+    "cards": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "Somehow I am missing my card.  What should I do?",
+   "fine": "lost_or_stolen_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "topup": 0,
+    "fees_charges": 0,
+    "cards": 1,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "My card still hasn't arrived after 2 weeks. Is it lost?",
+   "fine": "card_arrival",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "cards": 1,
+    "help_info": 0,
+    "account_identity": 0,
+    "topup": 0,
+    "fees_charges": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "Why was my virtual card declined when attempting to setup automatic billing?",
+   "fine": "virtual_card_not_working",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.8,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "account_identity": 0,
+    "help_info": 0,
+    "topup": 0,
+    "transfers": 0.01,
+    "cards": 0.83,
+    "refunds_disputes": 0.16
+   }
+  },
+  {
+   "text": "How can I stop fraud on my account right now?",
+   "fine": "compromised_card",
+   "gold": "cards",
+   "pred": "refunds_disputes",
+   "confidence": 0.4,
+   "correct": false,
+   "probabilities": {
+    "topup": 0,
+    "cards": 0.14,
+    "account_identity": 0.38,
+    "fees_charges": 0,
+    "transfers": 0,
+    "refunds_disputes": 0.48,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "I need help. I asked for a refund from a merchant a while ago, but I have not gotten my money back. I keep checking my account, but nothing is showing up. What should I do now?",
+   "fine": "Refund_not_showing_up",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "account_identity": 0,
+    "refunds_disputes": 1,
+    "help_info": 0,
+    "topup": 0,
+    "fees_charges": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "It looks like someone else withdrew cash from my account, can you help?",
+   "fine": "cash_withdrawal_not_recognised",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 0.97,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "account_identity": 0,
+    "transfers": 0,
+    "refunds_disputes": 0.98,
+    "help_info": 0,
+    "cards": 0.02,
+    "topup": 0
+   }
+  },
+  {
+   "text": "I don't think my top up is working correctly",
+   "fine": "top_up_failed",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "topup": 1,
+    "help_info": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "Can I top up my account with a cheque?",
+   "fine": "top_up_by_cash_or_cheque",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "cards": 0,
+    "help_info": 0,
+    "account_identity": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "topup": 1
+   }
+  },
+  {
+   "text": "There is a charge on my card that I did not make",
+   "fine": "card_payment_not_recognised",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "cards": 0,
+    "transfers": 0,
+    "topup": 0,
+    "help_info": 0,
+    "refunds_disputes": 1,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "Why did I get a transfer declined?",
+   "fine": "declined_transfer",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "help_info": 0,
+    "cards": 0,
+    "transfers": 1,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "i want to track the card you sent",
+   "fine": "card_arrival",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.98,
+   "correct": true,
+   "probabilities": {
+    "cards": 0.99,
+    "topup": 0,
+    "fees_charges": 0,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "transfers": 0.01,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "help me obtain a virtual card",
+   "fine": "getting_virtual_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "topup": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "transfers": 0,
+    "cards": 1,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "Use credit card to transfer money",
+   "fine": "topping_up_by_card",
+   "gold": "topup",
+   "pred": "transfers",
+   "confidence": 0.95,
+   "correct": false,
+   "probabilities": {
+    "transfers": 0.95,
+    "account_identity": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "help_info": 0,
+    "topup": 0.04,
+    "cards": 0.01
+   }
+  },
+  {
+   "text": "Why do I have a pending cash withdrawal?",
+   "fine": "pending_cash_withdrawal",
+   "gold": "refunds_disputes",
+   "pred": "transfers",
+   "confidence": 0.93,
+   "correct": false,
+   "probabilities": {
+    "topup": 0.02,
+    "transfers": 0.95,
+    "cards": 0,
+    "help_info": 0.02,
+    "refunds_disputes": 0.01,
+    "fees_charges": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "Why is the exchange rate wrong for my international withdrawal?",
+   "fine": "wrong_exchange_rate_for_cash_withdrawal",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 1,
+    "account_identity": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "cards": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Would I be charged for exchanging currencies?",
+   "fine": "exchange_charge",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 0.74,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "fees_charges": 0.78,
+    "account_identity": 0,
+    "help_info": 0.22,
+    "refunds_disputes": 0,
+    "cards": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Is using my card free?",
+   "fine": "card_payment_fee_charged",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 0.67,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "fees_charges": 0.72,
+    "refunds_disputes": 0,
+    "help_info": 0.15,
+    "topup": 0,
+    "transfers": 0,
+    "cards": 0.13
+   }
+  },
+  {
+   "text": "There is a payment that is not mine.",
+   "fine": "card_payment_not_recognised",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "topup": 0,
+    "transfers": 0,
+    "refunds_disputes": 1,
+    "help_info": 0,
+    "account_identity": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "Are there limits on auto top-up?",
+   "fine": "automatic_top_up",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "transfers": 0,
+    "account_identity": 0,
+    "topup": 1,
+    "help_info": 0,
+    "cards": 0,
+    "refunds_disputes": 0
+   }
+  },
+  {
+   "text": "My card stopped working when I use it",
+   "fine": "card_not_working",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "help_info": 0,
+    "cards": 1,
+    "refunds_disputes": 0,
+    "topup": 0,
+    "transfers": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "I just purchased a disposable virtual card. Am I able to use it for online purchases immediately?",
+   "fine": "get_disposable_virtual_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "topup": 0,
+    "fees_charges": 0,
+    "cards": 1,
+    "help_info": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0
+   }
+  },
+  {
+   "text": "Why does it say pending cash withdrawal on my statement?",
+   "fine": "pending_cash_withdrawal",
+   "gold": "refunds_disputes",
+   "pred": "transfers",
+   "confidence": 0.67,
+   "correct": false,
+   "probabilities": {
+    "refunds_disputes": 0.03,
+    "transfers": 0.71,
+    "cards": 0.03,
+    "account_identity": 0,
+    "help_info": 0.19,
+    "fees_charges": 0,
+    "topup": 0.04
+   }
+  },
+  {
+   "text": "When I try and to buy something using my card it keeps getting declined.",
+   "fine": "declined_transfer",
+   "gold": "transfers",
+   "pred": "cards",
+   "confidence": 0.65,
+   "correct": false,
+   "probabilities": {
+    "help_info": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0.29,
+    "topup": 0,
+    "cards": 0.71,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "How many disposable virtual cards can I have?",
+   "fine": "disposable_card_limits",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.91,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "help_info": 0.08,
+    "account_identity": 0,
+    "cards": 0.92,
+    "refunds_disputes": 0,
+    "topup": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "How can someone send me money?",
+   "fine": "receiving_money",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "help_info": 0,
+    "cards": 0,
+    "transfers": 1,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "This company sucks! Can you terminate my account?",
+   "fine": "terminate_account",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 1,
+    "topup": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "The app reverted my action when I topped up.",
+   "fine": "top_up_reverted",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "help_info": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "topup": 1,
+    "cards": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "What are some reasons that would cause ATM machines to decline my card? It has happened to me multiple times!",
+   "fine": "declined_cash_withdrawal",
+   "gold": "refunds_disputes",
+   "pred": "cards",
+   "confidence": 0.94,
+   "correct": false,
+   "probabilities": {
+    "transfers": 0,
+    "cards": 0.95,
+    "fees_charges": 0,
+    "help_info": 0.03,
+    "refunds_disputes": 0.02,
+    "topup": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "Do I need to make a regular payment before a contactless one?",
+   "fine": "contactless_not_working",
+   "gold": "cards",
+   "pred": "help_info",
+   "confidence": 0.48,
+   "correct": false,
+   "probabilities": {
+    "fees_charges": 0,
+    "topup": 0.02,
+    "help_info": 0.56,
+    "account_identity": 0,
+    "transfers": 0.01,
+    "cards": 0.41,
+    "refunds_disputes": 0
+   }
+  },
+  {
+   "text": "I would like to order a disposable virtual card. How can I do this?",
+   "fine": "get_disposable_virtual_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "cards": 1,
+    "account_identity": 0,
+    "fees_charges": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "How can I modify my details?",
+   "fine": "edit_personal_details",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 1,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "help_info": 0,
+    "topup": 0,
+    "transfers": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "How many days does it take until funds are in my account?",
+   "fine": "transfer_timing",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 0.91,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0.93,
+    "account_identity": 0,
+    "help_info": 0,
+    "refunds_disputes": 0.01,
+    "topup": 0.05,
+    "fees_charges": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "I don't recognise a cash withdrawal",
+   "fine": "cash_withdrawal_not_recognised",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 0.94,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "cards": 0.05,
+    "help_info": 0,
+    "account_identity": 0,
+    "transfers": 0,
+    "refunds_disputes": 0.95,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Do you know if my top-up has been cancelled?",
+   "fine": "top_up_reverted",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 1,
+    "cards": 0,
+    "transfers": 0,
+    "fees_charges": 0,
+    "help_info": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0
+   }
+  },
+  {
+   "text": "I believe my card has been stolen, what can I do about this situation? It's urgent.",
+   "fine": "lost_or_stolen_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "fees_charges": 0,
+    "cards": 1,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "My refund is missing",
+   "fine": "Refund_not_showing_up",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "help_info": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "refunds_disputes": 1,
+    "cards": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Is GBP a supported currency?",
+   "fine": "receiving_money",
+   "gold": "transfers",
+   "pred": "help_info",
+   "confidence": 1,
+   "correct": false,
+   "probabilities": {
+    "transfers": 0,
+    "fees_charges": 0,
+    "topup": 0,
+    "help_info": 1,
+    "refunds_disputes": 0,
+    "cards": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "Can you freeze my card it was stolen",
+   "fine": "lost_or_stolen_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "cards": 1,
+    "help_info": 0,
+    "fees_charges": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Is there a way to top-up automatically?",
+   "fine": "automatic_top_up",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 1,
+    "cards": 0,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "Where can the card be used?",
+   "fine": "card_acceptance",
+   "gold": "cards",
+   "pred": "help_info",
+   "confidence": 0.7,
+   "correct": false,
+   "probabilities": {
+    "topup": 0,
+    "cards": 0.25,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "help_info": 0.75,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "I think my identity has been stolen, can you check on unauthorized charges?",
+   "fine": "compromised_card",
+   "gold": "cards",
+   "pred": "refunds_disputes",
+   "confidence": 0.76,
+   "correct": false,
+   "probabilities": {
+    "cards": 0,
+    "account_identity": 0.2,
+    "topup": 0,
+    "transfers": 0,
+    "fees_charges": 0.01,
+    "refunds_disputes": 0.79,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "When adding money, what are the currencies you take?",
+   "fine": "supported_cards_and_currencies",
+   "gold": "help_info",
+   "pred": "topup",
+   "confidence": 0.76,
+   "correct": false,
+   "probabilities": {
+    "help_info": 0.21,
+    "transfers": 0,
+    "account_identity": 0,
+    "fees_charges": 0,
+    "topup": 0.79,
+    "cards": 0,
+    "refunds_disputes": 0
+   }
+  },
+  {
+   "text": "I found my card, can I add it to the app?",
+   "fine": "card_linking",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.96,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "cards": 0.97,
+    "account_identity": 0,
+    "help_info": 0.02,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "topup": 0.01
+   }
+  },
+  {
+   "text": "Why wouldn't the contactless payment work when I tried to pay at the bus today?",
+   "fine": "contactless_not_working",
+   "gold": "cards",
+   "pred": "refunds_disputes",
+   "confidence": 0.39,
+   "correct": false,
+   "probabilities": {
+    "fees_charges": 0,
+    "refunds_disputes": 0.48,
+    "topup": 0,
+    "help_info": 0.11,
+    "account_identity": 0,
+    "cards": 0.41,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "I went to withdraw some cash earlier today, but seems the ATM gave me the wrong amount of cash! The amount showing up in the app is a lot more",
+   "fine": "wrong_amount_of_cash_received",
+   "gold": "fees_charges",
+   "pred": "refunds_disputes",
+   "confidence": 0.51,
+   "correct": false,
+   "probabilities": {
+    "fees_charges": 0.38,
+    "transfers": 0.01,
+    "topup": 0.01,
+    "help_info": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0.59,
+    "cards": 0.01
+   }
+  },
+  {
+   "text": "So the transfer finally worked but now it's been pending for quite a long time. How long do you expect me to wait for it? It's quite urgent",
+   "fine": "pending_transfer",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 1,
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "topup": 0,
+    "help_info": 0,
+    "fees_charges": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "I just topped off my card will I be charged for it?",
+   "fine": "top_up_by_card_charge",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 0.66,
+   "correct": true,
+   "probabilities": {
+    "cards": 0.01,
+    "topup": 0.71,
+    "transfers": 0,
+    "help_info": 0,
+    "fees_charges": 0.28,
+    "refunds_disputes": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "How do I use a disposable virtual card?",
+   "fine": "get_disposable_virtual_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "help_info": 0.01,
+    "topup": 0,
+    "transfers": 0,
+    "cards": 0.99
+   }
+  },
+  {
+   "text": "Am I able to get a second card?",
+   "fine": "getting_spare_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "cards": 1,
+    "account_identity": 0,
+    "help_info": 0,
+    "fees_charges": 0,
+    "transfers": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "How do I activate a new card?",
+   "fine": "activate_my_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "help_info": 0,
+    "topup": 0,
+    "transfers": 0,
+    "cards": 1
+   }
+  },
+  {
+   "text": "Is my card accepted everywhere?",
+   "fine": "card_acceptance",
+   "gold": "cards",
+   "pred": "help_info",
+   "confidence": 0.78,
+   "correct": false,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 0,
+    "help_info": 0.81,
+    "refunds_disputes": 0.01,
+    "cards": 0.18,
+    "fees_charges": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "What do i need to verify my id?",
+   "fine": "unable_to_verify_identity",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "help_info": 0,
+    "fees_charges": 0,
+    "account_identity": 1,
+    "refunds_disputes": 0,
+    "topup": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "It appears my card expires next month, can I order a new one?",
+   "fine": "card_about_to_expire",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "transfers": 0,
+    "cards": 1,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "I found a charge for a direct debit that was not made by me.",
+   "fine": "direct_debit_payment_not_recognised",
+   "gold": "transfers",
+   "pred": "refunds_disputes",
+   "confidence": 0.88,
+   "correct": false,
+   "probabilities": {
+    "transfers": 0.1,
+    "account_identity": 0,
+    "refunds_disputes": 0.9,
+    "fees_charges": 0,
+    "topup": 0,
+    "help_info": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "I'm not sure where my phone is, I think someone stole it or it's lost.",
+   "fine": "lost_or_stolen_phone",
+   "gold": "account_identity",
+   "pred": "cards",
+   "confidence": 0.56,
+   "correct": false,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 0.23,
+    "help_info": 0.13,
+    "transfers": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0.02,
+    "cards": 0.62
+   }
+  },
+  {
+   "text": "Hi. I'm a new customer to your system and I think something isn't working right - or maybe it is. Maybe you can confirm. I tried to top up today (my first time ever) and it's been stuck at \"pending\" for over an hour now. Is it supposed to do this or is there something wrong in the system?",
+   "fine": "pending_top_up",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "cards": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "topup": 1,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "price of physical card",
+   "fine": "order_physical_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.94,
+   "correct": true,
+   "probabilities": {
+    "cards": 0.95,
+    "fees_charges": 0.03,
+    "transfers": 0,
+    "help_info": 0.02,
+    "topup": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "How do I change currencies to euros?",
+   "fine": "fiat_currency_support",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 0.95,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "transfers": 0,
+    "account_identity": 0.04,
+    "help_info": 0.96,
+    "refunds_disputes": 0,
+    "cards": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "How can I transfer funds from my bank to my top up account?",
+   "fine": "transfer_into_account",
+   "gold": "transfers",
+   "pred": "topup",
+   "confidence": 0.97,
+   "correct": false,
+   "probabilities": {
+    "fees_charges": 0,
+    "topup": 0.97,
+    "refunds_disputes": 0,
+    "transfers": 0.03,
+    "help_info": 0,
+    "cards": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "Can I use this account to receive my salary?",
+   "fine": "receiving_money",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 0.9,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "account_identity": 0.03,
+    "help_info": 0.05,
+    "refunds_disputes": 0,
+    "topup": 0,
+    "transfers": 0.92,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "It is impossible to verify my identity",
+   "fine": "unable_to_verify_identity",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "help_info": 0,
+    "cards": 0,
+    "transfers": 0,
+    "account_identity": 1,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "I forgot my code to get into the app.",
+   "fine": "passcode_forgotten",
+   "gold": "cards",
+   "pred": "account_identity",
+   "confidence": 0.98,
+   "correct": false,
+   "probabilities": {
+    "fees_charges": 0,
+    "transfers": 0,
+    "topup": 0,
+    "help_info": 0.01,
+    "account_identity": 0.98,
+    "cards": 0.01,
+    "refunds_disputes": 0
+   }
+  },
+  {
+   "text": "Can you please help me with this exchange?  I am trying to get crypto and the app won't let me.",
+   "fine": "beneficiary_not_allowed",
+   "gold": "transfers",
+   "pred": "help_info",
+   "confidence": 0.49,
+   "correct": false,
+   "probabilities": {
+    "account_identity": 0.01,
+    "fees_charges": 0.01,
+    "refunds_disputes": 0.01,
+    "topup": 0.35,
+    "transfers": 0.05,
+    "help_info": 0.5700000000000001,
+    "cards": 0
+   }
+  },
+  {
+   "text": "My phone was stolen so I no longer have access to the app.",
+   "fine": "lost_or_stolen_phone",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 0.78,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "cards": 0.17,
+    "transfers": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0.81,
+    "help_info": 0.02
+   }
+  },
+  {
+   "text": "My disposable virtual card is not working when I try to use it at a point of sale transaction. What do I do now?",
+   "fine": "virtual_card_not_working",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "topup": 0,
+    "help_info": 0,
+    "transfers": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "cards": 1
+   }
+  },
+  {
+   "text": "I will need to get a new card soon, how do I order?",
+   "fine": "card_about_to_expire",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "cards": 1,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "How do I link my card",
+   "fine": "card_linking",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.69,
+   "correct": true,
+   "probabilities": {
+    "topup": 0.2,
+    "account_identity": 0.01,
+    "fees_charges": 0,
+    "cards": 0.74,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "help_info": 0.05
+   }
+  },
+  {
+   "text": "What is my foreign exchange rate?",
+   "fine": "exchange_rate",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "refunds_disputes": 0,
+    "help_info": 1,
+    "transfers": 0,
+    "topup": 0,
+    "account_identity": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "What's the most disposable cards I can have?",
+   "fine": "disposable_card_limits",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.74,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "transfers": 0,
+    "account_identity": 0,
+    "cards": 0.78,
+    "help_info": 0.22,
+    "refunds_disputes": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "Will it automatically top-up or do I need to do that manually if there isn't much cash left?",
+   "fine": "automatic_top_up",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 0.98,
+   "correct": true,
+   "probabilities": {
+    "topup": 0.99,
+    "help_info": 0.01,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "cards": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "Hi, I was trying to use my card but it was declining by ATM. I have cross checked with two different ATMs but i was facing the same issue. Could you please check my account.",
+   "fine": "declined_cash_withdrawal",
+   "gold": "refunds_disputes",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": false,
+   "probabilities": {
+    "account_identity": 0,
+    "cards": 1,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "topup": 0,
+    "help_info": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "I'd like to use cash to top up. How do I find that option?",
+   "fine": "top_up_by_cash_or_cheque",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "cards": 0,
+    "account_identity": 0,
+    "help_info": 0,
+    "fees_charges": 0,
+    "topup": 1
+   }
+  },
+  {
+   "text": "What are the steps to activating a new card?",
+   "fine": "activate_my_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "fees_charges": 0,
+    "help_info": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "cards": 1,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "Do you have to order a new card before your current card expires?",
+   "fine": "card_about_to_expire",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "help_info": 0.01,
+    "cards": 0.99,
+    "fees_charges": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "Could I open an account for my children?",
+   "fine": "age_limit",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 0.9,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "cards": 0,
+    "account_identity": 0.92,
+    "fees_charges": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "help_info": 0.08
+   }
+  },
+  {
+   "text": "I transferred my funds, why did it not go through?",
+   "fine": "failed_transfer",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "transfers": 1,
+    "account_identity": 0,
+    "cards": 0,
+    "help_info": 0,
+    "fees_charges": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "What locations can I top up with cash?",
+   "fine": "top_up_by_cash_or_cheque",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "help_info": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "topup": 1,
+    "transfers": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "Where do I change my PIN?",
+   "fine": "change_pin",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "transfers": 0,
+    "account_identity": 0,
+    "topup": 0,
+    "help_info": 0,
+    "cards": 1,
+    "refunds_disputes": 0
+   }
+  },
+  {
+   "text": "I want to use bank transfer for topping up my account. How is it handled?",
+   "fine": "transfer_into_account",
+   "gold": "transfers",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": false,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "topup": 1,
+    "fees_charges": 0,
+    "cards": 0,
+    "help_info": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "I'm not sure why my top up request was denied",
+   "fine": "top_up_failed",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 1,
+    "transfers": 0,
+    "cards": 0,
+    "refunds_disputes": 0,
+    "help_info": 0,
+    "fees_charges": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "I attempted to use my card while I was intoxicated, and I failed to input my PIN, and the machine kept my card. How soon can I have it back?",
+   "fine": "pin_blocked",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "topup": 0,
+    "help_info": 0,
+    "cards": 1,
+    "account_identity": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "I bought some things this morning but the payment shows that it is pending",
+   "fine": "pending_card_payment",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 0.9,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0.91,
+    "transfers": 0.07,
+    "help_info": 0.01,
+    "cards": 0.01,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "What are the available cards?",
+   "fine": "visa_or_mastercard",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 0.54,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "topup": 0,
+    "help_info": 0.61,
+    "cards": 0.39
+   }
+  },
+  {
+   "text": "Do you support any currency?",
+   "fine": "fiat_currency_support",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "help_info": 1,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "cards": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Is there a reason I was charged a fee to transfer?",
+   "fine": "transfer_fee_charged",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 0.86,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "cards": 0,
+    "help_info": 0,
+    "topup": 0,
+    "transfers": 0.12,
+    "refunds_disputes": 0,
+    "fees_charges": 0.88
+   }
+  },
+  {
+   "text": "Can you tell me what countries you operate in?",
+   "fine": "country_support",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "transfers": 0,
+    "cards": 0,
+    "help_info": 1,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "What's going on with the top-up? All it says is pending, pending, pending! I use your service several times a week and have never had a problem before! What's going on here?",
+   "fine": "pending_top_up",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 1,
+    "transfers": 0,
+    "cards": 0,
+    "refunds_disputes": 0,
+    "help_info": 0,
+    "fees_charges": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "Why do you charge fees on card payments?",
+   "fine": "card_payment_fee_charged",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 0.9,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "fees_charges": 0.91,
+    "topup": 0.01,
+    "help_info": 0.07,
+    "cards": 0.01,
+    "account_identity": 0,
+    "refunds_disputes": 0
+   }
+  },
+  {
+   "text": "Can I use my card anywere?",
+   "fine": "card_acceptance",
+   "gold": "cards",
+   "pred": "help_info",
+   "confidence": 0.74,
+   "correct": false,
+   "probabilities": {
+    "cards": 0.22,
+    "topup": 0,
+    "fees_charges": 0,
+    "help_info": 0.78,
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "There's a direct debit I wish to dispute",
+   "fine": "direct_debit_payment_not_recognised",
+   "gold": "transfers",
+   "pred": "refunds_disputes",
+   "confidence": 0.63,
+   "correct": false,
+   "probabilities": {
+    "fees_charges": 0,
+    "cards": 0,
+    "help_info": 0,
+    "refunds_disputes": 0.68,
+    "transfers": 0.32,
+    "account_identity": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "I got a extra €1 fee in my statement",
+   "fine": "extra_charge_on_statement",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 0,
+    "fees_charges": 1,
+    "cards": 0,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "Are there restrictions for ordering extra cards?",
+   "fine": "getting_spare_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "transfers": 0,
+    "account_identity": 0,
+    "cards": 1
+   }
+  },
+  {
+   "text": "What will I be charged for a physical card?",
+   "fine": "order_physical_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.79,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 0,
+    "help_info": 0.01,
+    "refunds_disputes": 0,
+    "cards": 0.83,
+    "fees_charges": 0.16,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "What is the cost for an exchange fee?",
+   "fine": "exchange_charge",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 0.89,
+   "correct": true,
+   "probabilities": {
+    "help_info": 0.09,
+    "transfers": 0,
+    "account_identity": 0,
+    "topup": 0,
+    "fees_charges": 0.91,
+    "cards": 0,
+    "refunds_disputes": 0
+   }
+  },
+  {
+   "text": "My card has been charged two separate times for a single transaction.",
+   "fine": "transaction_charged_twice",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 0.98,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "help_info": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0.01,
+    "topup": 0,
+    "transfers": 0,
+    "fees_charges": 0.99
+   }
+  },
+  {
+   "text": "I forgot my password",
+   "fine": "passcode_forgotten",
+   "gold": "cards",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": false,
+   "probabilities": {
+    "fees_charges": 0,
+    "account_identity": 1,
+    "cards": 0,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Can I also transfer with SWIFT?",
+   "fine": "top_up_by_bank_transfer_charge",
+   "gold": "topup",
+   "pred": "transfers",
+   "confidence": 0.99,
+   "correct": false,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "help_info": 0.01,
+    "cards": 0,
+    "topup": 0,
+    "account_identity": 0,
+    "transfers": 0.99
+   }
+  },
+  {
+   "text": "I wanted to use my card contactless but it doesn't seem to be working, what could be the problem?",
+   "fine": "contactless_not_working",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "fees_charges": 0,
+    "topup": 0,
+    "help_info": 0,
+    "cards": 1,
+    "account_identity": 0,
+    "refunds_disputes": 0
+   }
+  },
+  {
+   "text": "My card has not arrived yet, where is it?",
+   "fine": "card_arrival",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "transfers": 0,
+    "account_identity": 0,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "cards": 1,
+    "topup": 0
+   }
+  },
+  {
+   "text": "How long with my cash withdrawal stay pending for?",
+   "fine": "pending_cash_withdrawal",
+   "gold": "refunds_disputes",
+   "pred": "transfers",
+   "confidence": 0.4,
+   "correct": false,
+   "probabilities": {
+    "fees_charges": 0,
+    "transfers": 0.49,
+    "topup": 0.05,
+    "help_info": 0.17,
+    "cards": 0.16,
+    "account_identity": 0,
+    "refunds_disputes": 0.13
+   }
+  },
+  {
+   "text": "Hi! I was wondering if you can help me. I used the city centre ATM to get some cash, but the machine declined my card. My account shows that transaction is still pending. I didn't receive the money, so please cancel that transaction.",
+   "fine": "pending_cash_withdrawal",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 0.96,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "transfers": 0,
+    "refunds_disputes": 0.97,
+    "cards": 0.03,
+    "help_info": 0,
+    "fees_charges": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Can I use my card at any ATMs?",
+   "fine": "atm_support",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 0.51,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "fees_charges": 0,
+    "topup": 0,
+    "help_info": 0.58,
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "cards": 0.42
+   }
+  },
+  {
+   "text": "Can i get a throw away card",
+   "fine": "get_disposable_virtual_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "topup": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "help_info": 0,
+    "cards": 1
+   }
+  },
+  {
+   "text": "I think someone has access to my card numbers that shouldn't.",
+   "fine": "compromised_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.76,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 0.04,
+    "transfers": 0,
+    "refunds_disputes": 0.16,
+    "help_info": 0,
+    "cards": 0.8,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "I need my card to come as soon as possible.",
+   "fine": "card_delivery_estimate",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "help_info": 0,
+    "cards": 1,
+    "topup": 0,
+    "account_identity": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "I got a fee for an ATM withdrawal.",
+   "fine": "cash_withdrawal_charge",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "cards": 0,
+    "transfers": 0,
+    "fees_charges": 0.99,
+    "refunds_disputes": 0.01,
+    "account_identity": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "I tried to take out cash but the amount isn't right, so what do I do?",
+   "fine": "wrong_amount_of_cash_received",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 0.34,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0.44,
+    "transfers": 0.01,
+    "topup": 0.03,
+    "help_info": 0.01,
+    "account_identity": 0,
+    "cards": 0.16,
+    "refunds_disputes": 0.35
+   }
+  },
+  {
+   "text": "Cash withdrawal still pending?",
+   "fine": "pending_cash_withdrawal",
+   "gold": "refunds_disputes",
+   "pred": "transfers",
+   "confidence": 0.56,
+   "correct": false,
+   "probabilities": {
+    "topup": 0.03,
+    "refunds_disputes": 0.15,
+    "fees_charges": 0,
+    "cards": 0.18,
+    "account_identity": 0,
+    "help_info": 0.02,
+    "transfers": 0.62
+   }
+  },
+  {
+   "text": "what is the charges for new card?",
+   "fine": "contactless_not_working",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.46,
+   "correct": true,
+   "probabilities": {
+    "cards": 0.54,
+    "topup": 0,
+    "transfers": 0,
+    "help_info": 0.02,
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "fees_charges": 0.44
+   }
+  },
+  {
+   "text": "How long does it take to process cheque deposits?",
+   "fine": "balance_not_updated_after_cheque_or_cash_deposit",
+   "gold": "help_info",
+   "pred": "topup",
+   "confidence": 0.5,
+   "correct": false,
+   "probabilities": {
+    "transfers": 0.25,
+    "account_identity": 0,
+    "help_info": 0.18,
+    "refunds_disputes": 0,
+    "cards": 0,
+    "topup": 0.57,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "The exchange rate would be?",
+   "fine": "exchange_rate",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "account_identity": 0,
+    "help_info": 1,
+    "refunds_disputes": 0,
+    "cards": 0,
+    "topup": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "I need a few more physical cards.",
+   "fine": "getting_spare_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "topup": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "cards": 1
+   }
+  },
+  {
+   "text": "I think the atm ate my card.",
+   "fine": "card_swallowed",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 0,
+    "cards": 1,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "Is my country supported",
+   "fine": "country_support",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "account_identity": 0,
+    "help_info": 1,
+    "refunds_disputes": 0,
+    "topup": 0,
+    "transfers": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "Ordered awhile back, what is the ETA in the US?",
+   "fine": "card_delivery_estimate",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0.01,
+    "help_info": 0,
+    "account_identity": 0,
+    "cards": 0.99,
+    "refunds_disputes": 0,
+    "topup": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "If I started the Bank transfer from Europe, how long will the process take to complete?",
+   "fine": "transfer_timing",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "transfers": 1,
+    "cards": 0,
+    "refunds_disputes": 0,
+    "help_info": 0,
+    "account_identity": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Can I use my American Express stored in Apple Pay to top up?",
+   "fine": "apple_pay_or_google_pay",
+   "gold": "cards",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": false,
+   "probabilities": {
+    "topup": 1,
+    "transfers": 0,
+    "cards": 0,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "I'm at an ATM and withdrew 30 pounds and was only given 10. What should I do?",
+   "fine": "wrong_amount_of_cash_received",
+   "gold": "fees_charges",
+   "pred": "refunds_disputes",
+   "confidence": 0.72,
+   "correct": false,
+   "probabilities": {
+    "refunds_disputes": 0.76,
+    "transfers": 0,
+    "fees_charges": 0.22,
+    "account_identity": 0,
+    "cards": 0.01,
+    "help_info": 0,
+    "topup": 0.01
+   }
+  },
+  {
+   "text": "What is this €1 fee in my statement?",
+   "fine": "extra_charge_on_statement",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 1,
+    "cards": 0,
+    "transfers": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "help_info": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "I sent some money and the receiver can't access it.",
+   "fine": "transfer_not_received_by_recipient",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "account_identity": 0,
+    "transfers": 1,
+    "topup": 0,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "How do I change my information?",
+   "fine": "edit_personal_details",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "topup": 0,
+    "cards": 0,
+    "help_info": 0,
+    "account_identity": 1
+   }
+  },
+  {
+   "text": "my atm cash out is still pending",
+   "fine": "pending_cash_withdrawal",
+   "gold": "refunds_disputes",
+   "pred": "transfers",
+   "confidence": 0.48,
+   "correct": false,
+   "probabilities": {
+    "cards": 0.11,
+    "account_identity": 0,
+    "help_info": 0.01,
+    "topup": 0.04,
+    "transfers": 0.55,
+    "refunds_disputes": 0.29,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "If I need a PIN for my card, where is it located?",
+   "fine": "get_physical_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "help_info": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "cards": 1,
+    "topup": 0
+   }
+  },
+  {
+   "text": "The ATM ate my card.",
+   "fine": "card_swallowed",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "topup": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "help_info": 0,
+    "account_identity": 0,
+    "cards": 1
+   }
+  },
+  {
+   "text": "Could you please activate my card",
+   "fine": "activate_my_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "topup": 0,
+    "cards": 1,
+    "help_info": 0,
+    "account_identity": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "How do I apply for a refund?",
+   "fine": "request_refund",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "help_info": 0,
+    "account_identity": 0,
+    "cards": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 1,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "A cash withdrawal is showing up that I didn't do.",
+   "fine": "cash_withdrawal_not_recognised",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 0.96,
+   "correct": true,
+   "probabilities": {
+    "help_info": 0,
+    "cards": 0.03,
+    "account_identity": 0,
+    "fees_charges": 0,
+    "transfers": 0,
+    "refunds_disputes": 0.97,
+    "topup": 0
+   }
+  },
+  {
+   "text": "If my kids wanted to use your service how old would they have to be?",
+   "fine": "age_limit",
+   "gold": "account_identity",
+   "pred": "help_info",
+   "confidence": 0.86,
+   "correct": false,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "topup": 0,
+    "fees_charges": 0,
+    "account_identity": 0.12,
+    "transfers": 0,
+    "help_info": 0.88,
+    "cards": 0
+   }
+  },
+  {
+   "text": "I completed a money transaction but the recipient hasn't received it",
+   "fine": "transfer_not_received_by_recipient",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "transfers": 1,
+    "refunds_disputes": 0,
+    "help_info": 0,
+    "account_identity": 0,
+    "cards": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "What does it mean by pending payment?",
+   "fine": "pending_card_payment",
+   "gold": "refunds_disputes",
+   "pred": "help_info",
+   "confidence": 0.5,
+   "correct": false,
+   "probabilities": {
+    "topup": 0.01,
+    "cards": 0,
+    "transfers": 0.26,
+    "fees_charges": 0,
+    "refunds_disputes": 0.16,
+    "account_identity": 0,
+    "help_info": 0.57
+   }
+  },
+  {
+   "text": "What's the U.S. Delivery time?",
+   "fine": "card_delivery_estimate",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.92,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0.01,
+    "refunds_disputes": 0,
+    "cards": 0.93,
+    "account_identity": 0,
+    "help_info": 0.06,
+    "fees_charges": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Why am I being asked to have an identity check",
+   "fine": "why_verify_identity",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "help_info": 0,
+    "cards": 0,
+    "transfers": 0,
+    "account_identity": 1,
+    "topup": 0
+   }
+  },
+  {
+   "text": "How do I do a successful transfer to an account?",
+   "fine": "beneficiary_not_allowed",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "help_info": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "transfers": 1,
+    "cards": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "where is theft-top option?",
+   "fine": "automatic_top_up",
+   "gold": "topup",
+   "pred": "cards",
+   "confidence": 0.73,
+   "correct": false,
+   "probabilities": {
+    "topup": 0.2,
+    "transfers": 0.01,
+    "cards": 0.76,
+    "help_info": 0.02,
+    "refunds_disputes": 0.01,
+    "fees_charges": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "Can I still use my account, even though the identity verification has not passed yet?",
+   "fine": "why_verify_identity",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "account_identity": 1,
+    "cards": 0,
+    "help_info": 0,
+    "fees_charges": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "how to activate card?",
+   "fine": "activate_my_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 1,
+    "account_identity": 0,
+    "topup": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "How much does it cost to top up by card?",
+   "fine": "top_up_by_card_charge",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 0.97,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0.03,
+    "transfers": 0,
+    "topup": 0.97,
+    "help_info": 0,
+    "account_identity": 0,
+    "cards": 0,
+    "refunds_disputes": 0
+   }
+  },
+  {
+   "text": "Why isn't the transfer on my account showing up?",
+   "fine": "balance_not_updated_after_bank_transfer",
+   "gold": "help_info",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": false,
+   "probabilities": {
+    "transfers": 1,
+    "account_identity": 0,
+    "fees_charges": 0,
+    "help_info": 0,
+    "topup": 0,
+    "refunds_disputes": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "My phone is lost.  What do I do to prevent someone from using the app?",
+   "fine": "lost_or_stolen_phone",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 0.58,
+   "correct": true,
+   "probabilities": {
+    "transfers": 0,
+    "fees_charges": 0,
+    "account_identity": 0.65,
+    "help_info": 0.04,
+    "cards": 0.31,
+    "topup": 0,
+    "refunds_disputes": 0
+   }
+  },
+  {
+   "text": "Can I reactivate a card I thought I lost?",
+   "fine": "card_linking",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 0,
+    "cards": 1,
+    "transfers": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "I have a card payment that was declined, but why?",
+   "fine": "declined_card_payment",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 0.97,
+   "correct": true,
+   "probabilities": {
+    "cards": 0.02,
+    "help_info": 0,
+    "transfers": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0.98,
+    "fees_charges": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "What do I do to get a disposable virtual card?",
+   "fine": "get_disposable_virtual_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 1,
+    "transfers": 0,
+    "topup": 0,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "Cash deposit to my account but it has not appeared.",
+   "fine": "balance_not_updated_after_cheque_or_cash_deposit",
+   "gold": "help_info",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": false,
+   "probabilities": {
+    "account_identity": 0,
+    "topup": 1,
+    "fees_charges": 0,
+    "cards": 0,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "My card payment is pending.",
+   "fine": "pending_card_payment",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 0.72,
+   "correct": true,
+   "probabilities": {
+    "topup": 0.01,
+    "refunds_disputes": 0.76,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "help_info": 0.01,
+    "cards": 0.21,
+    "transfers": 0.01
+   }
+  },
+  {
+   "text": "Do you have Visa or Matercard?",
+   "fine": "visa_or_mastercard",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 0.69,
+   "correct": true,
+   "probabilities": {
+    "topup": 0.02,
+    "cards": 0.24,
+    "account_identity": 0,
+    "fees_charges": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "help_info": 0.74
+   }
+  },
+  {
+   "text": "What should I do if I think someone is using my card.",
+   "fine": "compromised_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.63,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0.01,
+    "transfers": 0,
+    "cards": 0.68,
+    "refunds_disputes": 0.31,
+    "topup": 0,
+    "help_info": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "HOw do I get my card back after the ATM has pulled it in?",
+   "fine": "card_swallowed",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "help_info": 0.01,
+    "cards": 0.99,
+    "account_identity": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "I submitted my transfer but it has been pending for quite a while and I was wondering what takes so long? why hasn't it completed",
+   "fine": "pending_transfer",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "transfers": 1,
+    "help_info": 0,
+    "topup": 0,
+    "account_identity": 0,
+    "fees_charges": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "How do I deposit my paycheck to this account?",
+   "fine": "receiving_money",
+   "gold": "transfers",
+   "pred": "topup",
+   "confidence": 0.78,
+   "correct": false,
+   "probabilities": {
+    "transfers": 0.18,
+    "cards": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "help_info": 0.01,
+    "topup": 0.8099999999999999
+   }
+  },
+  {
+   "text": "Was charged an ATM fee despite it being a small withdrawal on the 1st day of the month. I thought I was allowed 200 per month?",
+   "fine": "cash_withdrawal_charge",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "topup": 0,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "cards": 0,
+    "fees_charges": 1,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "I would like a virtual card- where can I purchase one?",
+   "fine": "getting_virtual_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "account_identity": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "topup": 0,
+    "refunds_disputes": 0,
+    "cards": 1
+   }
+  },
+  {
+   "text": "I might need AUD instead of GBP, how to change?",
+   "fine": "exchange_via_app",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 0.92,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0.02,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "help_info": 0.93,
+    "topup": 0,
+    "transfers": 0.04,
+    "cards": 0.01
+   }
+  },
+  {
+   "text": "Is there anyway, I can get a disposable virtual card?",
+   "fine": "get_disposable_virtual_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "topup": 0,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "cards": 1,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "Where can I get a second card?",
+   "fine": "getting_spare_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 1,
+    "account_identity": 0,
+    "help_info": 0,
+    "topup": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "Why is my debit card being declined when I have money?",
+   "fine": "declined_card_payment",
+   "gold": "refunds_disputes",
+   "pred": "cards",
+   "confidence": 0.7,
+   "correct": false,
+   "probabilities": {
+    "refunds_disputes": 0.25,
+    "topup": 0,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "cards": 0.75
+   }
+  },
+  {
+   "text": "Does Google Play have an app to Top up?",
+   "fine": "apple_pay_or_google_pay",
+   "gold": "cards",
+   "pred": "topup",
+   "confidence": 0.89,
+   "correct": false,
+   "probabilities": {
+    "topup": 0.91,
+    "cards": 0,
+    "account_identity": 0,
+    "fees_charges": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "help_info": 0.09
+   }
+  },
+  {
+   "text": "My top up is pending.",
+   "fine": "pending_top_up",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "help_info": 0,
+    "cards": 0,
+    "transfers": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "topup": 1
+   }
+  },
+  {
+   "text": "The wrong rate was applied to an item I bought in a currency different from mine. Can this be changed?",
+   "fine": "card_payment_wrong_exchange_rate",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 0,
+    "cards": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 1,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "There is an error, the app says I made an ATM withdrawal and I didn't.",
+   "fine": "cash_withdrawal_not_recognised",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "cards": 0.01,
+    "refunds_disputes": 0.99,
+    "transfers": 0,
+    "topup": 0,
+    "fees_charges": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "What should I do if my card is missing?",
+   "fine": "lost_or_stolen_card",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 1,
+    "fees_charges": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "What countries will my card be supported in?",
+   "fine": "country_support",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 0.96,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "cards": 0.04,
+    "help_info": 0.96,
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "fees_charges": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "It will be fine to use at any establishment that accepts Mastercard.",
+   "fine": "card_acceptance",
+   "gold": "cards",
+   "pred": "help_info",
+   "confidence": 0.7,
+   "correct": false,
+   "probabilities": {
+    "cards": 0.25,
+    "topup": 0,
+    "fees_charges": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "help_info": 0.75
+   }
+  },
+  {
+   "text": "Where is my money? I transfered it and it isn't in my account.",
+   "fine": "balance_not_updated_after_bank_transfer",
+   "gold": "help_info",
+   "pred": "transfers",
+   "confidence": 1,
+   "correct": false,
+   "probabilities": {
+    "help_info": 0,
+    "cards": 0,
+    "account_identity": 0,
+    "fees_charges": 0,
+    "transfers": 1,
+    "refunds_disputes": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Do you have a limit to top ups?",
+   "fine": "top_up_limits",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "help_info": 0,
+    "transfers": 0,
+    "account_identity": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "topup": 1
+   }
+  },
+  {
+   "text": "I want to transfer from accounts in order to Top up. What are the steps necessary.",
+   "fine": "transfer_into_account",
+   "gold": "transfers",
+   "pred": "topup",
+   "confidence": 0.47,
+   "correct": false,
+   "probabilities": {
+    "topup": 0.55,
+    "help_info": 0,
+    "transfers": 0.45,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "From where are you getting your exchange rates?",
+   "fine": "exchange_rate",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "cards": 0,
+    "help_info": 1,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "account_identity": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "How do i get my salary in the account?",
+   "fine": "receiving_money",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 0.95,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "account_identity": 0.01,
+    "help_info": 0.01,
+    "refunds_disputes": 0,
+    "topup": 0.01,
+    "transfers": 0.97,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "How do I deposit cash into my account?",
+   "fine": "top_up_by_cash_or_cheque",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "topup": 1,
+    "transfers": 0,
+    "help_info": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "What countries can I travel to and have access to their currencies?",
+   "fine": "fiat_currency_support",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "account_identity": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "help_info": 1,
+    "cards": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Why was I charged multiple times for the same thing?",
+   "fine": "transaction_charged_twice",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "account_identity": 0,
+    "topup": 0,
+    "transfers": 0,
+    "refunds_disputes": 0.01,
+    "fees_charges": 0.99,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "Is it possible to make several disposable cards in a day?",
+   "fine": "disposable_card_limits",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.93,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "account_identity": 0,
+    "fees_charges": 0,
+    "help_info": 0.06,
+    "cards": 0.94,
+    "refunds_disputes": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "Can my 19 year old daughter open a savings account at the bank?",
+   "fine": "age_limit",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 0.52,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "cards": 0,
+    "fees_charges": 0,
+    "topup": 0,
+    "help_info": 0.41,
+    "account_identity": 0.59,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "How long should I expect for the card to arrive?",
+   "fine": "card_delivery_estimate",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 1,
+    "fees_charges": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "topup": 0,
+    "refunds_disputes": 0,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "What do I do if it says my card payment has been cancelled?",
+   "fine": "reverted_card_payment?",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 0.88,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "transfers": 0,
+    "refunds_disputes": 0.9,
+    "topup": 0,
+    "help_info": 0,
+    "cards": 0.1,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "Something is wrong with my payment account since it has been declined",
+   "fine": "declined_card_payment",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 0.97,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0.97,
+    "transfers": 0,
+    "account_identity": 0,
+    "cards": 0.02,
+    "help_info": 0,
+    "fees_charges": 0,
+    "topup": 0.01
+   }
+  },
+  {
+   "text": "Please help me make a transfer. I keep receiving an error and I'm trying to make the initial mortgage payment for a flat I'm buying. What is the deal here?",
+   "fine": "failed_transfer",
+   "gold": "transfers",
+   "pred": "transfers",
+   "confidence": 0.98,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "topup": 0,
+    "transfers": 0.98,
+    "help_info": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0.02,
+    "account_identity": 0
+   }
+  },
+  {
+   "text": "Do you happen to do exchanges of EUR?",
+   "fine": "fiat_currency_support",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 0.97,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "transfers": 0.02,
+    "cards": 0,
+    "refunds_disputes": 0,
+    "topup": 0,
+    "help_info": 0.98,
+    "fees_charges": 0
+   }
+  },
+  {
+   "text": "what do i do if my verification failed",
+   "fine": "unable_to_verify_identity",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "help_info": 0,
+    "transfers": 0,
+    "account_identity": 1,
+    "refunds_disputes": 0,
+    "fees_charges": 0,
+    "topup": 0
+   }
+  },
+  {
+   "text": "I was charged extra for a withdrawal",
+   "fine": "cash_withdrawal_charge",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "cards": 0,
+    "account_identity": 0,
+    "transfers": 0,
+    "help_info": 0,
+    "refunds_disputes": 0,
+    "fees_charges": 1,
+    "topup": 0
+   }
+  },
+  {
+   "text": "Will filling stations accept my card?",
+   "fine": "card_acceptance",
+   "gold": "cards",
+   "pred": "help_info",
+   "confidence": 0.88,
+   "correct": false,
+   "probabilities": {
+    "topup": 0.01,
+    "help_info": 0.89,
+    "fees_charges": 0,
+    "refunds_disputes": 0.02,
+    "transfers": 0,
+    "account_identity": 0,
+    "cards": 0.08
+   }
+  },
+  {
+   "text": "Is there a way to reset my passcode?",
+   "fine": "passcode_forgotten",
+   "gold": "cards",
+   "pred": "account_identity",
+   "confidence": 0.93,
+   "correct": false,
+   "probabilities": {
+    "fees_charges": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "help_info": 0,
+    "cards": 0.05,
+    "topup": 0,
+    "account_identity": 0.95
+   }
+  },
+  {
+   "text": "How can I fix a problem where contactless isn't working?",
+   "fine": "contactless_not_working",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 0.99,
+   "correct": true,
+   "probabilities": {
+    "cards": 1,
+    "account_identity": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "topup": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "More than one time this week, I have been charged more than once for the same transaction. Please correct the issue and refund the duplicate charges.",
+   "fine": "transaction_charged_twice",
+   "gold": "fees_charges",
+   "pred": "fees_charges",
+   "confidence": 0.81,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0.84,
+    "refunds_disputes": 0.16,
+    "topup": 0,
+    "help_info": 0,
+    "account_identity": 0,
+    "cards": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "I want to choose a different PIN.",
+   "fine": "change_pin",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "account_identity": 0,
+    "topup": 0,
+    "fees_charges": 0,
+    "cards": 1,
+    "refunds_disputes": 0,
+    "transfers": 0,
+    "help_info": 0
+   }
+  },
+  {
+   "text": "What is the necessity of verifying the top up?",
+   "fine": "verify_top_up",
+   "gold": "topup",
+   "pred": "topup",
+   "confidence": 0.94,
+   "correct": true,
+   "probabilities": {
+    "topup": 0.95,
+    "cards": 0,
+    "account_identity": 0.02,
+    "fees_charges": 0,
+    "transfers": 0,
+    "refunds_disputes": 0,
+    "help_info": 0.03
+   }
+  },
+  {
+   "text": "please delete my account, your services are not up to par.",
+   "fine": "terminate_account",
+   "gold": "account_identity",
+   "pred": "account_identity",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "fees_charges": 0,
+    "transfers": 0,
+    "topup": 0,
+    "help_info": 0,
+    "account_identity": 1,
+    "refunds_disputes": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "Am I able to change my PIN at any cash machines?",
+   "fine": "change_pin",
+   "gold": "cards",
+   "pred": "cards",
+   "confidence": 1,
+   "correct": true,
+   "probabilities": {
+    "refunds_disputes": 0,
+    "cards": 1,
+    "fees_charges": 0,
+    "topup": 0,
+    "help_info": 0,
+    "account_identity": 0,
+    "transfers": 0
+   }
+  },
+  {
+   "text": "I think I see a withdraw I did not make.",
+   "fine": "cash_withdrawal_not_recognised",
+   "gold": "refunds_disputes",
+   "pred": "refunds_disputes",
+   "confidence": 0.95,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "help_info": 0,
+    "transfers": 0.03,
+    "refunds_disputes": 0.97,
+    "fees_charges": 0,
+    "account_identity": 0,
+    "cards": 0
+   }
+  },
+  {
+   "text": "Where can I use this card at an ATM?",
+   "fine": "atm_support",
+   "gold": "help_info",
+   "pred": "help_info",
+   "confidence": 0.5,
+   "correct": true,
+   "probabilities": {
+    "topup": 0,
+    "cards": 0.42,
+    "help_info": 0.58,
+    "account_identity": 0,
+    "fees_charges": 0,
+    "refunds_disputes": 0,
+    "transfers": 0
+   }
+  }
+ ]
+}
