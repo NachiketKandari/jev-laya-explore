@@ -4,37 +4,54 @@ Scratch workspace for evaluating **Laya** (open local typed-decision model) and 
 (TypeSafe's hosted equivalent) as local classifiers. Start with **[JOURNEY.md](JOURNEY.md)**
 — the full log of what was tried, in order — or jump to a doc below.
 
-Everything needed to run this is committed: the **wheels** (`vendor/wheels/`, 221 MB) and the
-**weights** (`models/`, 3.2 GB). It installs and runs with no network.
+Everything needed to run this is **reproducible from what's committed**: the pinned
+environment (`uv.lock` + `requirements.txt`) installs from the network, and the
+**weights** (~3.2 GB) and **wheelhouse** (~221 MB) are re-fetched on demand — they
+stay out of the pushed history (GitHub 100 MB/file cap). After fetching, it runs
+with no network.
 
 ## Quick start
 
 ```bash
 uv sync --frozen                            # exact 38-package environment from uv.lock
+uv run scripts/fetch_models.py              # fetch weights into models/ (~3.2 GB, Hub)
 uv run scripts/verify_offline.py            # proves requirements + weights work offline
 uv run laya_classify.py "the API returns 500 on every request"
 ```
 
-`uv sync --frozen` reproduces the pinned environment. To install from the vendored wheelhouse
-instead — no network at all, and the way to rebuild this on another Mac:
+`uv sync --frozen` reproduces the pinned environment. To install from a local wheelhouse
+instead — no network at all, and the way to rebuild this on another Mac, first build it:
 
 ```bash
 uv venv --python 3.12 .venv
+uv run --no-project --with pip python -m pip download -r requirements.txt -d vendor/wheels --only-binary=:all:
 uv pip install --no-index --find-links vendor/wheels -r requirements.txt
 ```
+
+Build the wheelhouse first: only its `SHA256SUMS` manifest is tracked, the `*.whl`
+blobs stay out of git (see below).
 
 The wheelhouse is platform-specific (**macOS 14+ arm64, CPython 3.12**); on Linux/CUDA delete the
 pinned host wheels and let `uv sync` resolve fresh — `laya` is pure Python and works anywhere
 `torch` does.
 
-## What's committed
+## What's committed (and what's fetched)
 
 | path | size | what |
 |---|---:|---|
-| `models/laya/` | 2.37 GB | upstream checkpoints: `english` (bundle root) + `multilingual/` + `typed-decisions/` |
-| `models/laya-mlx/` | 846 MB | the same `english` checkpoint pre-converted to MLX fp16 |
-| `vendor/wheels/` | 221 MB | all 38 wheels + `SHA256SUMS` |
 | `uv.lock` | 73 KB | resolved dependency graph behind `uv sync --frozen` |
+| `requirements.txt` | 1 KB | flat pin list (wheelhouse input, verified against the lock) |
+| `vendor/wheels/SHA256SUMS` | 4 KB | manifest of the 38-wheel house (blobs excluded from git) |
+| `data/`, `benchmarks/`, `notebooks/`, `web/public/results.json` | ~2 MB | vendored datasets, measured results, notebook, web demo data |
+| `training/*.json` | KBs | calibration + head-tune reports (weight `.pt` files excluded, reproducible via script) |
+
+Fetched on demand, never pushed (GitHub 100 MB/file cap):
+
+| path | size | how |
+|---|---:|---|
+| `models/laya/` | 2.37 GB | `uv run scripts/fetch_models.py` — `english` (bundle root) + `multilingual/` + `typed-decisions/` |
+| `models/laya-mlx/` | 846 MB | same script — the `english` checkpoint pre-converted to MLX fp16 |
+| `vendor/wheels/*.whl` | 221 MB | `pip download -r requirements.txt -d vendor/wheels` (manifest stays tracked) |
 
 ## Try it
 
@@ -122,44 +139,30 @@ uv run scripts/fetch_models.py --force              # re-fetch
 - `uv venv` ships without `pip`, so the wheelhouse was built with
   `uv run --no-project --with pip python -m pip download -r requirements.txt -d vendor/wheels --only-binary=:all:`.
 
-## Committing 3.2 GB of weights
+## Weights and wheels are fetched, not committed
 
-`models/` is committed, so the repository is ~3.4 GB and a fresh clone transfers all of it. Against
-GitHub's current limits:
-
-| | limit | this repo |
-|---|---|---|
-| Repo tree, no LFS | **100 MB per file** (hard reject) | 4 checkpoint files of 644–846 MB → rejected |
-| Git LFS per file | 2 GB (Free/Pro), 4 GB (Team) | largest is 846 MB → fits |
-| Git LFS free storage | 10 GiB / month (Free/Pro) | 3.0 GiB → fits |
-| Git LFS free bandwidth | 10 GiB / month (Free/Pro) | **every fresh clone downloads ~3.0 GiB** |
-
-Two consequences worth knowing before you push:
-
-1. **`git-lfs` is not installed on this machine** (`git lfs version` → not a git command), so the
-   weight files cannot be pushed at all until you `brew install git-lfs` and `git lfs install`,
-   then re-add the weights so they are tracked via LFS (`.gitattributes` with `*.safetensors`).
-2. Even with LFS, each clone spends ~30% of the free monthly bandwidth, and pushing a *modified*
-   weight file bills its full size again.
-
-Cheaper alternatives, roughly in order:
-
-- **Don't ship the weights.** They are public upstream artefacts and
-  `uv run scripts/fetch_models.py` re-fetches them in a few minutes. Keeps the repo at ~230 MB.
-- **GitHub release assets** — 2 GiB per file and *not* billed as LFS; attach one per checkpoint.
-- **An external store** (Hugging Face, S3, or plain `rsync` of `models/`).
-
-The wheelhouse has the same problem in miniature: it is 221 MB including a **127 MB `torch` wheel**
-over the 100 MB tree limit. Either track `vendor/wheels/*.whl` with LFS too, or keep the wheels out
-and let `uv sync` fetch them.
-
-To drop the weights before pushing anything (nothing is pushed yet, so this is clean):
+`models/` (~3.2 GB) and `vendor/wheels/*.whl` (~221 MB) stay out of the pushed
+history — GitHub rejects any plain-tree file over 100 MB, and the checkpoints are
+644–846 MB each. What you clone is a ~2 MB repo; you fetch the blobs with:
 
 ```bash
-git reset --soft HEAD~1          # uncommit, keep the files staged
-git restore --staged models/     # unstage them
-echo 'models/' >> .gitignore     # keep them on disk, out of history
+uv run scripts/fetch_models.py                      # english + multilingual + MLX export
+uv run scripts/fetch_models.py --checkpoints all    # add typed-decisions
 ```
+
+Why not LFS / release assets / external store:
+
+| option | limit | verdict |
+|---|---|---|
+| Repo tree, no LFS | **100 MB per file** (hard reject) | 4 checkpoint files of 644–846 MB → rejected |
+| Git LFS per file | 2 GB (Free/Pro) | would fit (largest 846 MB), but… |
+| Git LFS free bandwidth | 10 GiB / month | **every fresh clone would spend ~3.0 GiB (~30%)** |
+| GitHub release assets | 2 GiB per file, not LFS-billed | viable if you ever need one-click blobs |
+
+So the repo keeps the public upstream artefacts out and re-fetches them in a few
+minutes (`scripts/fetch_models.py`; `uv sync` for wheels). `git-lfs` is not installed
+here and not needed. The wheelhouse's 127 MB `torch` wheel has the same problem in
+miniature, hence only `vendor/wheels/SHA256SUMS` is tracked.
 
 ## Headline numbers (M1 Pro, 16 GB)
 

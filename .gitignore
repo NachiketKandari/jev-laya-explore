@@ -30,9 +30,11 @@ vendor/wheels/*.whl
 training/heads/*.pt
 
 # ---------------------------------------------------------------------------
-# These ARE committed on purpose, despite their size:
-#   models/          3.2 GB of checkpoints  (scripts/fetch_models.py re-fetches them)
-#   vendor/wheels/   221 MB wheelhouse      (enables a fully offline `uv pip install`)
-#   uv.lock          resolved dependency graph behind `uv sync --frozen`
-# See README.md "Committing 3.2 GB of weights" for the 100 MB/file push caveat.
+# Large blobs below stay OUT of the pushed history (GitHub 100MB/file cap).
+# Re-fetch locally: `uv run scripts/fetch_models.py` (weights) and
+# `uv sync --frozen` (env). What IS tracked for reproducibility:
+#   uv.lock                  resolved dependency graph behind `uv sync --frozen`
+#   requirements.txt         flat pin list (input for the wheelhouse download)
+#   vendor/wheels/SHA256SUMS manifest of the 38-wheel house (blobs excluded)
+# See README.md "Weights and wheels are fetched, not committed".
 # ---------------------------------------------------------------------------

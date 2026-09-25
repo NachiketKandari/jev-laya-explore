@@ -1,9 +1,10 @@
 # Findings: Laya and Jev on this machine
 
 Machine: MacBook Pro **M1 Pro, 16 GB**, macOS 26 (Darwin 25.6), Python 3.12.14 via `uv`,
-`torch 2.14.0` (MPS) and `mlx 0.32.2`. Model weights: **3.2 GB, vendored in `./models`**
-(all three checkpoints plus a pre-converted MLX export), with the 221 MB wheelhouse in
-`vendor/wheels`. Nothing here needs the network — see §6.
+`torch 2.14.0` (MPS) and `mlx 0.32.2`. Model weights (~3.2 GB: all three checkpoints
+plus a pre-converted MLX export) and the 221 MB wheelhouse are **fetched on demand**
+(`scripts/fetch_models.py`, `pip download`), not committed — see README.md
+"Weights and wheels are fetched, not committed". Nothing needs the network once fetched — see §6.
 
 ## TL;DR
 
@@ -213,7 +214,7 @@ testable against LocalJev's own request validation.
 | `scripts/verify_offline.py` | asserts requirements + wheelhouse + offline loading, exit 1 on any gap |
 | `pyproject.toml` / `uv.lock` | the pinned environment behind `uv sync --frozen` |
 | `requirements.txt` | flat pin list, also the input for the wheelhouse download |
-| `models/`, `vendor/wheels/` | committed weights and wheels (§6) |
+| `models/`, `vendor/wheels/*.whl` | fetched blobs, excluded from git (§6) |
 | `localjev/` | cloned reference implementation of the Jev wire protocol |
 
 ## 6. Reproducing this environment offline
@@ -224,22 +225,22 @@ resolves 59 packages because the lock is universal (Linux/CUDA transitive deps i
 Mac `uv sync --frozen` installs exactly the 38 verified packages, byte-identical to the freeze
 captured before locking.
 
-Vendored artefacts:
+Fetched artefacts (excluded from git, see README.md "Weights and wheels are fetched"):
 
 | path | size | contents |
 |---|---:|---|
 | `models/laya/` | 2.37 GB | `english` at the root, `multilingual/` and `typed-decisions/` beneath it |
 | `models/laya-mlx/` | 846 MB | `english` pre-converted to MLX fp16 |
-| `vendor/wheels/` | 221 MB | 38 wheels + `SHA256SUMS` |
+| `vendor/wheels/*.whl` | 221 MB | 38 wheels (only `SHA256SUMS` is tracked) |
 
-Only loader files are vendored — `model.safetensors`, `rl_agent_config.json`, `encoder/config.json`,
+Only loader files are fetched — `model.safetensors`, `rl_agent_config.json`, `encoder/config.json`,
 `tokenizer/*` (+ `mlx_config.json` for the MLX export). The upstream repo is 2.4 GB all-in, so the
 8.4 MB of assets, eval results and training scripts are skipped.
 
 ```bash
 uv sync --frozen                                             # exact env from uv.lock
-uv pip install --no-index --find-links vendor/wheels -r requirements.txt  # fully offline
-uv run scripts/fetch_models.py [--checkpoints all] [--force]
+uv run scripts/fetch_models.py [--checkpoints all] [--force] # fetch weights first
+uv pip install --no-index --find-links vendor/wheels -r requirements.txt  # fully offline (after pip download)
 uv run scripts/verify_offline.py [--compare-runtimes]
 ```
 
@@ -267,19 +268,19 @@ PyTorch/MLX agreeing on the label with the network off.
   Hub reuses its local Xet blobs (APFS clones, so the vendored files are independent: link count
   1, safe to commit and modify).
 
-### Committing weights
+### Why weights stay out of git
 
-Git stores these as full blobs, so the repo is ~3.4 GB and every clone transfers it. GitHub's
-limits (checked 2026-09): a **100 MB per-file cap** in a plain tree, **2 GB per file** via Git LFS
-on Free/Pro, and **10 GiB/month** each of LFS storage and bandwidth. So the 644–846 MB checkpoint
-files fit in LFS's 3.0 GiB of 10 GiB storage — but every fresh clone spends ~3.0 GiB of the 10 GiB
-monthly bandwidth, and re-pushing a changed weight file bills its full size again.
+Git stores these as full blobs, so committing them would make every clone transfer
+~3.4 GB. GitHub's limits (checked 2026-09): a **100 MB per-file cap** in a plain tree
+(hard reject — the 644–846 MB checkpoint files fail it), **2 GB per file** via Git LFS,
+and **10 GiB/month** each of LFS storage and bandwidth — every fresh clone would spend
+~3.0 GiB of the 10 GiB monthly bandwidth, and re-pushing a changed weight file bills
+its full size again.
 
-`git-lfs` is also **not installed here** (`git lfs version` → not a git command), so the weights
-cannot be pushed as-is; `brew install git-lfs` + `git lfs install` + a `.gitattributes` for
-`*.safetensors` would be needed. The 221 MB wheelhouse has the same problem in miniature: its
-127 MB `torch` wheel is over the 100 MB tree limit. See README.md for the re-fetch alternative and
-the commands to uncommit `models/` (nothing has been pushed, so it is a clean `reset --soft`).
+So `models/` and `vendor/wheels/*.whl` are gitignored and re-fetched
+(`scripts/fetch_models.py`; `uv sync` / `pip download` for wheels). `git-lfs` is not
+installed here and not needed. The 221 MB wheelhouse has the same problem in miniature:
+its 127 MB `torch` wheel is over the 100 MB tree limit, hence only `SHA256SUMS` is tracked.
 
 ## Sources
 
